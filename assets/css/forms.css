@@ -1,0 +1,219 @@
+/* MailPilot forms — scoped, mobile-first, theme-agnostic. */
+
+.mailpilot-form {
+	box-sizing: border-box;
+	max-width: 480px;
+	margin: 0 auto;
+}
+
+.mailpilot-form *,
+.mailpilot-form *::before,
+.mailpilot-form *::after {
+	box-sizing: border-box;
+}
+
+.mailpilot-field {
+	margin: 0 0 16px;
+}
+
+.mailpilot-field > label {
+	display: block;
+	margin: 0 0 6px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.mailpilot-form input[type="text"],
+.mailpilot-form input[type="email"],
+.mailpilot-form input[type="tel"],
+.mailpilot-form input[type="url"],
+.mailpilot-form input[type="date"],
+.mailpilot-form input[type="number"],
+.mailpilot-form textarea,
+.mailpilot-form select {
+	width: 100%;
+	padding: 10px 12px;
+	font-size: 16px; /* 16px avoids iOS zoom-on-focus. */
+	line-height: 1.4;
+	border: 1px solid #ccd0d4;
+	border-radius: 6px;
+	background: #fff;
+}
+
+.mailpilot-form textarea {
+	min-height: 96px;
+	resize: vertical;
+}
+
+.mailpilot-choices label,
+.mailpilot-gdpr {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	font-weight: 400;
+	font-size: 14px;
+	margin: 0 0 4px;
+}
+
+.mailpilot-name-legend {
+	display: block;
+	margin: 0 0 6px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.mailpilot-name-group {
+	display: flex;
+	gap: 12px;
+}
+
+.mailpilot-name-part {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.mailpilot-name-part > label {
+	display: block;
+	margin: 0 0 6px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 1.4;
+	color: #646970;
+}
+
+@media ( max-width: 380px ) {
+	.mailpilot-name-group {
+		flex-direction: column;
+		gap: 0;
+	}
+}
+
+.mailpilot-required {
+	color: #d63638;
+}
+
+.mailpilot-submit button {
+	width: 100%;
+	padding: 12px 16px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	background: #2271b1;
+	border: 0;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.mailpilot-submit button:hover {
+	background: #135e96;
+}
+
+.mailpilot-message {
+	padding: 12px 14px;
+	border-radius: 6px;
+	margin: 0 0 12px;
+	font-size: 14px;
+}
+
+.mailpilot-message-success {
+	background: #edfaef;
+	color: #00450c;
+}
+
+.mailpilot-message-error {
+	background: #fcf0f1;
+	color: #8a1f11;
+}
+
+@media (min-width: 600px) {
+	.mailpilot-display-full_screen {
+		max-width: 720px;
+	}
+}
+
+/*
+ * Free-tier fallback positioning for "floating bar" and "slide in" forms.
+ *
+ * Only applied when MailPilot Pro's Popups & Lead Capture module (Task 3.8)
+ * is not active — `.mailpilot-fallback-positioned` is added in FormRenderer
+ * only in that case, so these rules never apply to a form Pro has already
+ * wrapped in its own popup chrome (mailpilot-pro/assets/css/popups.css),
+ * which uses an entirely different class namespace on its own wrapper.
+ * Free gets real "always on" positioning and a session-only dismiss; the
+ * trigger, frequency capping, true popup/full-screen overlay, and A/B
+ * testing remain the Pro upsell.
+ */
+.mailpilot-fallback-positioned.mailpilot-display-floating_bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99998;
+	max-width: none;
+	margin: 0;
+	padding: 14px 44px 14px 16px;
+	background: #fff;
+	box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.mailpilot-fallback-positioned.mailpilot-display-floating_bar .mailpilot-field {
+	flex: 1 1 200px;
+	margin: 0;
+}
+
+.mailpilot-fallback-positioned.mailpilot-display-floating_bar .mailpilot-submit {
+	flex: 0 0 auto;
+	width: auto;
+}
+
+.mailpilot-fallback-positioned.mailpilot-display-floating_bar .mailpilot-submit button {
+	width: auto;
+	padding: 10px 20px;
+}
+
+.mailpilot-fallback-positioned.mailpilot-display-slide_in {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 99998;
+	max-width: 340px;
+	width: calc(100% - 40px);
+	margin: 0;
+	padding: 24px 20px 20px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 599px) {
+	.mailpilot-fallback-positioned.mailpilot-display-slide_in {
+		left: 12px;
+		right: 12px;
+		bottom: 12px;
+		width: auto;
+		max-width: none;
+	}
+}
+
+.mailpilot-fallback-positioned[hidden] {
+	display: none;
+}
+
+.mailpilot-dismiss {
+	position: absolute;
+	top: 6px;
+	right: 8px;
+	border: 0;
+	background: transparent;
+	padding: 4px 8px;
+	font-size: 20px;
+	line-height: 1;
+	color: #50575e;
+	cursor: pointer;
+}

@@ -1,0 +1,42 @@
+/* MailPilot providers — connection screen. */
+
+.mailpilot-badge {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.3px;
+	line-height: 1.6;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.mailpilot-badge-on {
+	background: #00a32a;
+}
+
+.mailpilot-badge-off {
+	background: #8c8f94;
+}
+
+.mailpilot-guide {
+	margin-left: 8px;
+	font-style: italic;
+	color: #646970;
+}
+
+.mailpilot-fetch-status {
+	margin-left: 10px;
+	color: #646970;
+	font-size: 13px;
+}
+
+.mailpilot-connect-form .mp-manual-wrap {
+	margin: 8px 0 0;
+}
+
+.mailpilot-connect-form #mp-list {
+	min-width: 280px;
+	max-width: 100%;
+}

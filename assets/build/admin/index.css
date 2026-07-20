@@ -1,0 +1,142 @@
+/**
+ * MailPilot admin — shared design system.
+ *
+ * Tokens and base rules for every redesigned admin screen (Dashboard,
+ * Analytics, Subscribers, …). Extracted from the design handoff
+ * (dashboard design/design_handoff_form_builder/DESIGN_SYSTEM.md) and kept
+ * in sync with the Form Builder's own `--fb-` scale so the two surfaces feel
+ * identical.
+ *
+ * Everything is scoped under `.mailpilot-admin` so nothing leaks into — or is
+ * clobbered by — WordPress admin's global styles (per DESIGN_SYSTEM.md §6).
+ */
+
+.mailpilot-admin {
+	/* Brand */
+	--fb-accent: #2563eb;
+	--fb-accent-purple: #7c3aed;
+
+	/* Text */
+	--fb-text-primary: #101828;
+	--fb-text-secondary: #344054;
+	--fb-text-tertiary: #475467;
+	--fb-text-muted: #667085;
+	--fb-text-faint: #98a2b3;
+	--fb-text-disabled: #d0d5dd;
+
+	/* Surfaces */
+	--fb-bg-app: #f0f1f4;
+	--fb-bg-canvas: #f7f8fa;
+	--fb-bg-panel: #ffffff;
+	--fb-bg-subtle: #f9fafb;
+	--fb-bg-hover: #f2f4f7;
+	--fb-bg-mock: #fbfbfc;
+
+	/* Borders */
+	--fb-border: #e7e9ee;
+	--fb-border-input: #e1e4ea;
+	--fb-border-card: #e9ebf0;
+	--fb-border-faint: #f2f4f7;
+
+	/* Status */
+	--fb-success: #12b76a;
+	--fb-warning: #f79009;
+	--fb-danger: #d92d20;
+	--fb-danger-bg: #fef3f2;
+	--fb-star: #f59e0b;
+
+	/* Tints */
+	--fb-tint-blue: rgba( 37, 99, 235, 0.08 );
+	--fb-tint-purple: rgba( 124, 58, 237, 0.08 );
+	--fb-tint-teal: rgba( 13, 148, 136, 0.09 );
+	--fb-tint-pink: rgba( 219, 39, 119, 0.07 );
+	--fb-tint-green: rgba( 18, 183, 106, 0.09 );
+	--fb-tint-orange: rgba( 247, 144, 9, 0.09 );
+
+	/* Focus ring */
+	--fb-ring-blue: rgba( 37, 99, 235, 0.12 );
+	--fb-ring-purple: rgba( 124, 58, 237, 0.1 );
+
+	/* Shadows */
+	--fb-shadow-xs: 0 1px 2px rgba( 16, 24, 40, 0.05 );
+	--fb-shadow-sm: 0 1px 2px rgba( 16, 24, 40, 0.1 );
+	--fb-shadow-menu: 0 12px 32px -8px rgba( 16, 24, 40, 0.16 );
+	--fb-shadow-modal: 0 24px 64px -12px rgba( 16, 24, 40, 0.3 );
+
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	color: var( --fb-text-primary );
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.mailpilot-admin *,
+.mailpilot-admin *::before,
+.mailpilot-admin *::after {
+	box-sizing: border-box;
+}
+
+.mailpilot-admin a {
+	color: var( --fb-accent );
+	text-decoration: none;
+}
+
+.mailpilot-admin a:hover {
+	color: #1d4ed8;
+	text-decoration: underline;
+}
+
+.mailpilot-admin ::selection {
+	background: rgba( 37, 99, 235, 0.18 );
+}
+
+.mailpilot-admin input,
+.mailpilot-admin select,
+.mailpilot-admin button,
+.mailpilot-admin textarea {
+	font-family: inherit;
+}
+
+/* The plugin's screens paint their own #F0F1F4 canvas; drop WP's default
+   wrap padding so the redesign fills edge-to-edge inside #wpbody-content. */
+.mailpilot-admin-wrap {
+	margin: 0;
+	padding: 0;
+}
+
+.mailpilot-admin-loading {
+	padding: 48px 24px;
+	color: #667085;
+	font-size: 14px;
+}
+
+/* Reliable card hover via CSS (never sticks the way JS mouseenter/leave can). */
+.mailpilot-admin .mp-hover-card {
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mailpilot-admin .mp-hover-card:hover {
+	border-color: #2563eb;
+	box-shadow: 0 4px 12px -2px rgba( 16, 24, 40, 0.08 );
+}
+
+@keyframes mpFadeUp {
+	from {
+		opacity: 0;
+		transform: translateY( 4px );
+	}
+	to {
+		opacity: 1;
+		transform: translateY( 0 );
+	}
+}
+
+@keyframes mpGrow {
+	from {
+		transform: scaleX( 0 );
+	}
+	to {
+		transform: scaleX( 1 );
+	}
+}
+
