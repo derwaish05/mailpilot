@@ -52,7 +52,7 @@ final class Block {
 
 			if ( 'published' !== $form->status ) {
 				/* translators: %s: form title. */
-				$label = sprintf( __( '%s (draft)', 'mailpilot' ), $label );
+				$label = sprintf( __( '%s (draft)', 'brainstudioz-mailpilot' ), $label );
 			}
 
 			$options[] = [
@@ -90,7 +90,7 @@ final class Block {
 		$html = $this->module->render_form( $id, ! is_admin() );
 
 		if ( '' === $html && is_admin() ) {
-			return '<p>' . esc_html__( 'Select a published MailPilot form.', 'mailpilot' ) . '</p>';
+			return '<p>' . esc_html__( 'Select a published MailPilot form.', 'brainstudioz-mailpilot' ) . '</p>';
 		}
 
 		return $html;

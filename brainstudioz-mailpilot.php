@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       MailPilot
+ * Plugin Name:       BrainStudioz MailPilot
  * Plugin URI:        https://github.com/derwaish05/mailpilot
  * Description:       Build newsletter signup forms, manage subscribers, and sync contacts with Mailchimp, Brevo, MailerLite, Kit, ActiveCampaign, and more.
  * Version:           1.0.0
@@ -10,7 +10,7 @@
  * Author URI:        https://brainstudioz.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       mailpilot
+ * Text Domain:       brainstudioz-mailpilot
  * Domain Path:       /languages
  *
  * @package MailPilot

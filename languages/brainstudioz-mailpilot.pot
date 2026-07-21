@@ -1,4 +1,4 @@
-# MailPilot translation template.
+# BrainStudioz MailPilot translation template.
 # Copyright (C) 2026 BrainStudioz
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
@@ -9,4 +9,4 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: BrainStudioz\n"
-"X-Domain: mailpilot\n"
+"X-Domain: brainstudioz-mailpilot\n"

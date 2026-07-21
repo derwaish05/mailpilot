@@ -50,7 +50,7 @@ final class RoutingConditions {
 					return 'source';
 				}
 				public function label(): string {
-					return __( 'Source', 'mailpilot' );
+					return __( 'Source', 'brainstudioz-mailpilot' );
 				}
 				public function matches( array $config, Subscriber $subscriber, array $context ): bool {
 					$operator = (string) ( $config['operator'] ?? 'is' );
@@ -70,7 +70,7 @@ final class RoutingConditions {
 					return 'status';
 				}
 				public function label(): string {
-					return __( 'Status', 'mailpilot' );
+					return __( 'Status', 'brainstudioz-mailpilot' );
 				}
 				public function matches( array $config, Subscriber $subscriber, array $context ): bool {
 					$operator = (string) ( $config['operator'] ?? 'is' );

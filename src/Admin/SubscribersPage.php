@@ -32,7 +32,7 @@ final class SubscribersPage {
 	 */
 	public function render(): void {
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'mailpilot' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$action     = isset( $_REQUEST['action'] ) ? sanitize_key( wp_unslash( $_REQUEST['action'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -150,7 +150,7 @@ final class SubscribersPage {
 			$this->plugin->subscribers()->delete( $id );
 		}
 
-		$this->notice( sprintf( /* translators: %d: count. */ _n( '%d subscriber deleted.', '%d subscribers deleted.', count( $ids ), 'mailpilot' ), count( $ids ) ) );
+		$this->notice( sprintf( /* translators: %d: count. */ _n( '%d subscriber deleted.', '%d subscribers deleted.', count( $ids ), 'brainstudioz-mailpilot' ), count( $ids ) ) );
 	}
 
 	/**
@@ -176,7 +176,7 @@ final class SubscribersPage {
 		$targets     = array_map( static fn ( $c ): int => (int) $c->id, $connections );
 
 		if ( ! $targets ) {
-			$this->notice( __( 'No active provider connections to resync to.', 'mailpilot' ), 'warning' );
+			$this->notice( __( 'No active provider connections to resync to.', 'brainstudioz-mailpilot' ), 'warning' );
 
 			return;
 		}
@@ -189,7 +189,7 @@ final class SubscribersPage {
 			}
 		}
 
-		$this->notice( sprintf( /* translators: %d: count. */ _n( 'Queued resync for %d subscriber.', 'Queued resync for %d subscribers.', count( $ids ), 'mailpilot' ), count( $ids ) ) );
+		$this->notice( sprintf( /* translators: %d: count. */ _n( 'Queued resync for %d subscriber.', 'Queued resync for %d subscribers.', count( $ids ), 'brainstudioz-mailpilot' ), count( $ids ) ) );
 	}
 
 	/**
@@ -202,7 +202,7 @@ final class SubscribersPage {
 		$tag = isset( $_REQUEST['bulk_tag'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['bulk_tag'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		if ( '' === $tag ) {
-			$this->notice( __( 'Enter a tag name in the "Bulk tag" box before applying tag actions.', 'mailpilot' ), 'warning' );
+			$this->notice( __( 'Enter a tag name in the "Bulk tag" box before applying tag actions.', 'brainstudioz-mailpilot' ), 'warning' );
 
 			return;
 		}
@@ -221,7 +221,7 @@ final class SubscribersPage {
 			}
 		}
 
-		$this->notice( __( 'Tag updated for selected subscribers.', 'mailpilot' ) );
+		$this->notice( __( 'Tag updated for selected subscribers.', 'brainstudioz-mailpilot' ) );
 	}
 
 	/**
@@ -232,7 +232,7 @@ final class SubscribersPage {
 		// this dispatches; PHPCS scopes the check per function, so mark the block.
 		// phpcs:disable WordPress.Security.NonceVerification.Missing -- verified upstream.
 		if ( empty( $_FILES['mailpilot_csv']['tmp_name'] ) ) {
-			$this->notice( __( 'No file uploaded.', 'mailpilot' ), 'error' );
+			$this->notice( __( 'No file uploaded.', 'brainstudioz-mailpilot' ), 'error' );
 
 			return;
 		}
@@ -247,7 +247,7 @@ final class SubscribersPage {
 		$this->notice(
 			sprintf(
 				/* translators: 1: imported count, 2: skipped count. */
-				__( 'Import complete: %1$d imported, %2$d skipped.', 'mailpilot' ),
+				__( 'Import complete: %1$d imported, %2$d skipped.', 'brainstudioz-mailpilot' ),
 				$result['imported'],
 				$result['skipped']
 			)
@@ -276,21 +276,21 @@ final class SubscribersPage {
 		$table->prepare_items();
 
 		echo '<div class="wrap">';
-		echo '<h1 class="wp-heading-inline">' . esc_html__( 'Subscribers', 'mailpilot' ) . '</h1>';
+		echo '<h1 class="wp-heading-inline">' . esc_html__( 'Subscribers', 'brainstudioz-mailpilot' ) . '</h1>';
 		echo '<hr class="wp-header-end" />';
 
 		// Import form.
 		echo '<form method="post" enctype="multipart/form-data" style="margin:12px 0">';
 		wp_nonce_field( 'mailpilot_import_csv' );
 		echo '<input type="file" name="mailpilot_csv" accept=".csv" /> ';
-		submit_button( __( 'Import CSV', 'mailpilot' ), 'secondary', 'mailpilot_import', false );
+		submit_button( __( 'Import CSV', 'brainstudioz-mailpilot' ), 'secondary', 'mailpilot_import', false );
 		echo '</form>';
 
 		// List + filters + bulk actions.
 		echo '<form method="get">';
 		echo '<input type="hidden" name="page" value="' . esc_attr( AdminMenu::SLUG . '-subscribers' ) . '" />';
-		$table->search_box( __( 'Search subscribers', 'mailpilot' ), 'mailpilot-subscriber-search' );
-		echo '<p><input type="text" name="bulk_tag" placeholder="' . esc_attr__( 'Bulk tag (for add/remove tag actions)', 'mailpilot' ) . '" class="regular-text" /></p>';
+		$table->search_box( __( 'Search subscribers', 'brainstudioz-mailpilot' ), 'mailpilot-subscriber-search' );
+		echo '<p><input type="text" name="bulk_tag" placeholder="' . esc_attr__( 'Bulk tag (for add/remove tag actions)', 'brainstudioz-mailpilot' ) . '" class="regular-text" /></p>';
 		$table->display();
 		echo '</form>';
 

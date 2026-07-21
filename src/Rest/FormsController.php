@@ -101,7 +101,7 @@ final class FormsController {
 	public function set_status( WP_REST_Request $request ): WP_REST_Response|WP_Error {
 		$form = $this->plugin->forms()->repository()->find( (int) $request['id'] );
 		if ( null === $form ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Form not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Form not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		$params       = $request->get_json_params() ?: $request->get_params();
@@ -116,7 +116,7 @@ final class FormsController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage forms.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage forms.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -131,7 +131,7 @@ final class FormsController {
 		$form = $this->plugin->forms()->repository()->find( (int) $request['id'] );
 
 		if ( null === $form ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Form not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Form not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		return new WP_REST_Response( $this->serialize( $form ), 200 );
@@ -179,7 +179,7 @@ final class FormsController {
 		$id = (int) $request['id'];
 
 		if ( null === $this->plugin->forms()->repository()->find( $id ) ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Form not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Form not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		$this->plugin->forms()->repository()->delete( $id );

@@ -42,8 +42,8 @@ final class AWeber extends AbstractProvider {
 
 	public function credential_fields(): array {
 		return [
-			$this->credential_field( 'access_token', __( 'Access Token', 'mailpilot' ), true ),
-			$this->credential_field( 'account_id', __( 'Account ID', 'mailpilot' ), true ),
+			$this->credential_field( 'access_token', __( 'Access Token', 'brainstudioz-mailpilot' ), true ),
+			$this->credential_field( 'account_id', __( 'Account ID', 'brainstudioz-mailpilot' ), true ),
 		];
 	}
 

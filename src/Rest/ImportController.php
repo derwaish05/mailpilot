@@ -62,7 +62,7 @@ final class ImportController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to import subscribers.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to import subscribers.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -78,12 +78,12 @@ final class ImportController {
 		$file  = $files['file'] ?? null;
 
 		if ( ! is_array( $file ) || empty( $file['tmp_name'] ) || ! is_uploaded_file( (string) $file['tmp_name'] ) ) {
-			return new WP_Error( 'mailpilot_no_file', __( 'No CSV file was uploaded.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_no_file', __( 'No CSV file was uploaded.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$name = (string) ( $file['name'] ?? '' );
 		if ( '' !== $name && ! preg_match( '/\.csv$/i', $name ) ) {
-			return new WP_Error( 'mailpilot_bad_type', __( 'Please upload a .csv file.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_bad_type', __( 'Please upload a .csv file.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$csv    = new Csv( $this->plugin->subscribers() );

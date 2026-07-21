@@ -37,17 +37,17 @@ enum Event: string {
 	 */
 	public function label(): string {
 		return match ( $this ) {
-			self::FormSubmission    => __( 'Form Submission', 'mailpilot' ),
-			self::SubscriberCreated => __( 'Subscriber Created', 'mailpilot' ),
-			self::SubscriberUpdated => __( 'Subscriber Updated', 'mailpilot' ),
-			self::StatusChanged     => __( 'Status Changed', 'mailpilot' ),
-			self::TagAdded          => __( 'Tag Added', 'mailpilot' ),
-			self::TagRemoved        => __( 'Tag Removed', 'mailpilot' ),
-			self::ProviderSynced    => __( 'Provider Synced', 'mailpilot' ),
-			self::OrderCreated      => __( 'Order Created', 'mailpilot' ),
-			self::OrderCompleted    => __( 'Order Completed', 'mailpilot' ),
-			self::PurchasedProduct  => __( 'Purchased Product', 'mailpilot' ),
-			self::RefundedProduct   => __( 'Refunded Product', 'mailpilot' ),
+			self::FormSubmission    => __( 'Form Submission', 'brainstudioz-mailpilot' ),
+			self::SubscriberCreated => __( 'Subscriber Created', 'brainstudioz-mailpilot' ),
+			self::SubscriberUpdated => __( 'Subscriber Updated', 'brainstudioz-mailpilot' ),
+			self::StatusChanged     => __( 'Status Changed', 'brainstudioz-mailpilot' ),
+			self::TagAdded          => __( 'Tag Added', 'brainstudioz-mailpilot' ),
+			self::TagRemoved        => __( 'Tag Removed', 'brainstudioz-mailpilot' ),
+			self::ProviderSynced    => __( 'Provider Synced', 'brainstudioz-mailpilot' ),
+			self::OrderCreated      => __( 'Order Created', 'brainstudioz-mailpilot' ),
+			self::OrderCompleted    => __( 'Order Completed', 'brainstudioz-mailpilot' ),
+			self::PurchasedProduct  => __( 'Purchased Product', 'brainstudioz-mailpilot' ),
+			self::RefundedProduct   => __( 'Refunded Product', 'brainstudioz-mailpilot' ),
 		};
 	}
 }

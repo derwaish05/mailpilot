@@ -40,7 +40,7 @@ final class FormsPage {
 	 */
 	public function render(): void {
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'mailpilot' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$action = isset( $_GET['action'] ) ? sanitize_key( wp_unslash( $_GET['action'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -115,7 +115,7 @@ final class FormsPage {
 	 */
 	private function render_builder(): void {
 		echo '<div class="wrap"><div id="mailpilot-builder-root" class="mailpilot-builder-loading">'
-			. esc_html__( 'Loading builder…', 'mailpilot' )
+			. esc_html__( 'Loading builder…', 'brainstudioz-mailpilot' )
 			. '</div></div>';
 	}
 
@@ -129,17 +129,17 @@ final class FormsPage {
 		echo '<div class="wrap">';
 		printf(
 			'<h1 class="wp-heading-inline">%s</h1> <a href="%s" class="page-title-action">%s</a><hr class="wp-header-end" />',
-			esc_html__( 'Forms', 'mailpilot' ),
+			esc_html__( 'Forms', 'brainstudioz-mailpilot' ),
 			esc_url( $new ),
-			esc_html__( 'Add New', 'mailpilot' )
+			esc_html__( 'Add New', 'brainstudioz-mailpilot' )
 		);
 
 		echo '<table class="widefat striped"><thead><tr>';
-		echo '<th>' . esc_html__( 'Title', 'mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'mailpilot' ) . '</th><th>' . esc_html__( 'Shortcode', 'mailpilot' ) . '</th><th>' . esc_html__( 'Fields', 'mailpilot' ) . '</th><th></th>';
+		echo '<th>' . esc_html__( 'Title', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Shortcode', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Fields', 'brainstudioz-mailpilot' ) . '</th><th></th>';
 		echo '</tr></thead><tbody>';
 
 		if ( ! $forms ) {
-			echo '<tr><td colspan="5">' . esc_html__( 'No forms yet.', 'mailpilot' ) . '</td></tr>';
+			echo '<tr><td colspan="5">' . esc_html__( 'No forms yet.', 'brainstudioz-mailpilot' ) . '</td></tr>';
 		}
 
 		foreach ( $forms as $form ) {
@@ -152,15 +152,15 @@ final class FormsPage {
 			printf(
 				'<tr><td><strong><a href="%s">%s</a></strong></td><td>%s</td><td><code>[mailpilot_form id="%d"]</code></td><td>%d</td><td><a href="%s">%s</a> | <a href="%s" onclick="return confirm(\'%s\')">%s</a></td></tr>',
 				esc_url( $edit ),
-				esc_html( $form->title ?: __( '(untitled)', 'mailpilot' ) ),
+				esc_html( $form->title ?: __( '(untitled)', 'brainstudioz-mailpilot' ) ),
 				esc_html( ucfirst( $form->status ) ),
 				(int) $form->id,
 				count( $form->fields ),
 				esc_url( $edit ),
-				esc_html__( 'Edit', 'mailpilot' ),
+				esc_html__( 'Edit', 'brainstudioz-mailpilot' ),
 				esc_url( $delete ),
-				esc_attr__( 'Delete this form?', 'mailpilot' ),
-				esc_html__( 'Delete', 'mailpilot' )
+				esc_attr__( 'Delete this form?', 'brainstudioz-mailpilot' ),
+				esc_html__( 'Delete', 'brainstudioz-mailpilot' )
 			);
 		}
 
@@ -173,7 +173,7 @@ final class FormsPage {
 	public function delete(): void {
 		$id = isset( $_GET['form'] ) ? (int) $_GET['form'] : 0;
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) || ! wp_verify_nonce( isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '', 'mailpilot_delete_form_' . $id ) ) {
-			wp_die( esc_html__( 'Forbidden.', 'mailpilot' ) );
+			wp_die( esc_html__( 'Forbidden.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$this->plugin->forms()->repository()->delete( $id );
@@ -193,11 +193,11 @@ final class FormsPage {
 	 */
 	private function display_type_options(): array {
 		$options = [
-			[ 'value' => 'inline', 'label' => __( 'Inline', 'mailpilot' ) ],
-			[ 'value' => 'popup', 'label' => __( 'Popup', 'mailpilot' ) ],
-			[ 'value' => 'floating_bar', 'label' => __( 'Floating Bar', 'mailpilot' ) ],
-			[ 'value' => 'slide_in', 'label' => __( 'Slide In', 'mailpilot' ) ],
-			[ 'value' => 'full_screen', 'label' => __( 'Full Screen', 'mailpilot' ) ],
+			[ 'value' => 'inline', 'label' => __( 'Inline', 'brainstudioz-mailpilot' ) ],
+			[ 'value' => 'popup', 'label' => __( 'Popup', 'brainstudioz-mailpilot' ) ],
+			[ 'value' => 'floating_bar', 'label' => __( 'Floating Bar', 'brainstudioz-mailpilot' ) ],
+			[ 'value' => 'slide_in', 'label' => __( 'Slide In', 'brainstudioz-mailpilot' ) ],
+			[ 'value' => 'full_screen', 'label' => __( 'Full Screen', 'brainstudioz-mailpilot' ) ],
 		];
 
 		if ( $this->pro_popups_active() ) {
@@ -227,19 +227,19 @@ final class FormsPage {
 	 */
 	private function field_types(): array {
 		$labels = [
-			'email'    => __( 'Email', 'mailpilot' ),
-			'name'     => __( 'Name', 'mailpilot' ),
-			'phone'    => __( 'Phone', 'mailpilot' ),
-			'company'  => __( 'Company', 'mailpilot' ),
-			'website'  => __( 'Website', 'mailpilot' ),
-			'textarea' => __( 'Textarea', 'mailpilot' ),
-			'dropdown' => __( 'Dropdown', 'mailpilot' ),
-			'radio'    => __( 'Radio', 'mailpilot' ),
-			'checkbox' => __( 'Checkbox', 'mailpilot' ),
-			'date'     => __( 'Date', 'mailpilot' ),
-			'number'   => __( 'Number', 'mailpilot' ),
-			'hidden'   => __( 'Hidden', 'mailpilot' ),
-			'gdpr'     => __( 'GDPR Checkbox', 'mailpilot' ),
+			'email'    => __( 'Email', 'brainstudioz-mailpilot' ),
+			'name'     => __( 'Name', 'brainstudioz-mailpilot' ),
+			'phone'    => __( 'Phone', 'brainstudioz-mailpilot' ),
+			'company'  => __( 'Company', 'brainstudioz-mailpilot' ),
+			'website'  => __( 'Website', 'brainstudioz-mailpilot' ),
+			'textarea' => __( 'Textarea', 'brainstudioz-mailpilot' ),
+			'dropdown' => __( 'Dropdown', 'brainstudioz-mailpilot' ),
+			'radio'    => __( 'Radio', 'brainstudioz-mailpilot' ),
+			'checkbox' => __( 'Checkbox', 'brainstudioz-mailpilot' ),
+			'date'     => __( 'Date', 'brainstudioz-mailpilot' ),
+			'number'   => __( 'Number', 'brainstudioz-mailpilot' ),
+			'hidden'   => __( 'Hidden', 'brainstudioz-mailpilot' ),
+			'gdpr'     => __( 'GDPR Checkbox', 'brainstudioz-mailpilot' ),
 		];
 
 		$types = [];

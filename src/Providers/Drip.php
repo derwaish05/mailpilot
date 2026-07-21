@@ -42,8 +42,8 @@ final class Drip extends AbstractProvider {
 
 	public function credential_fields(): array {
 		return [
-			$this->credential_field( 'api_key', __( 'API Key', 'mailpilot' ), true, __( 'API token', 'mailpilot' ) ),
-			$this->credential_field( 'account_id', __( 'Account ID', 'mailpilot' ), true ),
+			$this->credential_field( 'api_key', __( 'API Key', 'brainstudioz-mailpilot' ), true, __( 'API token', 'brainstudioz-mailpilot' ) ),
+			$this->credential_field( 'account_id', __( 'Account ID', 'brainstudioz-mailpilot' ), true ),
 		];
 	}
 
@@ -57,7 +57,7 @@ final class Drip extends AbstractProvider {
 		// campaign (an email sequence you can enroll a subscriber into),
 		// which `get_lists()` already fetched but was previously unused
 		// because this capability was off.
-		return __( 'Campaign', 'mailpilot' );
+		return __( 'Campaign', 'brainstudioz-mailpilot' );
 	}
 
 	public function create_contact( Contact $contact, ProviderConnection $connection ): SyncResult {

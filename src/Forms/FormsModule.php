@@ -68,8 +68,8 @@ final class FormsModule {
 			return $this->editor_hint(
 				$id > 0
 					/* translators: %d: form id. */
-					? sprintf( __( 'MailPilot: form #%d was not found.', 'mailpilot' ), $id )
-					: __( 'MailPilot: no form selected.', 'mailpilot' )
+					? sprintf( __( 'MailPilot: form #%d was not found.', 'brainstudioz-mailpilot' ), $id )
+					: __( 'MailPilot: no form selected.', 'brainstudioz-mailpilot' )
 			);
 		}
 
@@ -77,10 +77,10 @@ final class FormsModule {
 			return $this->editor_hint(
 				sprintf(
 					/* translators: %s: form title. */
-					__( 'MailPilot: the form “%s” is a draft. Set its status to Published in the form builder to display it here.', 'mailpilot' ),
+					__( 'MailPilot: the form “%s” is a draft. Set its status to Published in the form builder to display it here.', 'brainstudioz-mailpilot' ),
 					$form->title ?: sprintf(
 					/* translators: %d: form id. */
-					__( 'Form #%d', 'mailpilot' ),
+					__( 'Form #%d', 'brainstudioz-mailpilot' ),
 					(int) $form->id
 				)
 				)
@@ -159,7 +159,7 @@ final class FormsModule {
 			? $this->repository->find_by_elementor_id( $elementor_id )
 			: $this->repository->find_by_inline_hash( $hash );
 
-		$title = (string) ( $settings['title'] ?? ( $existing?->title ?? __( 'Inline form', 'mailpilot' ) ) );
+		$title = (string) ( $settings['title'] ?? ( $existing?->title ?? __( 'Inline form', 'brainstudioz-mailpilot' ) ) );
 
 		$managed_settings = array_merge(
 			$settings,

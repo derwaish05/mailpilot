@@ -45,7 +45,7 @@ final class GetResponse extends AbstractProvider {
 	}
 
 	public function list_label(): string {
-		return __( 'Campaign', 'mailpilot' );
+		return __( 'Campaign', 'brainstudioz-mailpilot' );
 	}
 
 	public function create_contact( Contact $contact, ProviderConnection $connection ): SyncResult {

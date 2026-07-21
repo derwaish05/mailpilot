@@ -110,7 +110,7 @@ final class Plugin {
 		add_action(
 			'init',
 			static function (): void {
-				load_plugin_textdomain( 'mailpilot', false, dirname( MAILPILOT_BASENAME ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- loads bundled /languages translations for non-.org distribution.
+				load_plugin_textdomain( 'brainstudioz-mailpilot', false, dirname( MAILPILOT_BASENAME ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- loads bundled /languages translations for non-.org distribution.
 			}
 		);
 

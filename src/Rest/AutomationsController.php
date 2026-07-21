@@ -85,7 +85,7 @@ final class AutomationsController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage automations.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage automations.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -126,13 +126,13 @@ final class AutomationsController {
 		$secret  = (string) $request['secret'];
 		$webhook = $this->repository->incoming_by_secret( $secret );
 		if ( null === $webhook ) {
-			return new WP_Error( 'mailpilot_invalid_hook', __( 'Unknown webhook.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_invalid_hook', __( 'Unknown webhook.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		$params = $request->get_json_params() ?: $request->get_params();
 		$email  = sanitize_email( (string) ( $params['email'] ?? '' ) );
 		if ( '' === $email || ! is_email( $email ) ) {
-			return new WP_Error( 'mailpilot_invalid_email', __( 'A valid email is required.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_invalid_email', __( 'A valid email is required.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		try {

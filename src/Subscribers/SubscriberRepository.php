@@ -49,8 +49,8 @@ class SubscriberRepository {
 		global $wpdb;
 
 		$table = $this->table();
-		$row   = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared
-			$wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id )
+		$row   = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
+			$wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name from internal constant; id bound.
 		);
 
 		return $row ? Subscriber::fromRow( $row ) : null;
@@ -65,8 +65,8 @@ class SubscriberRepository {
 		global $wpdb;
 
 		$table = $this->table();
-		$row   = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared
-			$wpdb->prepare( "SELECT * FROM {$table} WHERE email = %s", self::normalize_email( $email ) )
+		$row   = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
+			$wpdb->prepare( "SELECT * FROM {$table} WHERE email = %s", self::normalize_email( $email ) ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name from internal constant; email bound.
 		);
 
 		return $row ? Subscriber::fromRow( $row ) : null;
@@ -161,13 +161,13 @@ class SubscriberRepository {
 		// whitelisted ORDER BY; all user values are bound through prepare().
 		$count_sql      = "SELECT COUNT(DISTINCT {$table}.id) FROM {$table} {$where}"; // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- table name from internal constant; values bound below.
 		$count_prepared = $params ? $wpdb->prepare( $count_sql, $params ) : $count_sql; // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- identifiers are internal; values are bound.
-		$total          = (int) $wpdb->get_var( $count_prepared ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- prepared above.
+		$total          = (int) $wpdb->get_var( $count_prepared ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- prepared above.
 
 		// Page of results.
 		$sql          = "SELECT DISTINCT {$table}.* FROM {$table} {$where} ORDER BY {$table}.{$orderby} {$order} LIMIT %d OFFSET %d"; // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- table/orderby are internal + whitelisted; values bound below.
 		$paged_params = array_merge( $params, [ $per_page, $offset ] );
 		$paged_sql    = $wpdb->prepare( $sql, $paged_params ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- identifiers are internal; values are bound.
-		$rows         = $wpdb->get_results( $paged_sql ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- prepared above.
+		$rows         = $wpdb->get_results( $paged_sql ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- prepared above.
 
 		return [
 			'items' => array_map( [ Subscriber::class, 'fromRow' ], $rows ?: [] ),
@@ -183,7 +183,7 @@ class SubscriberRepository {
 
 		$table = $this->table();
 
-		return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared
+		return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- table name from internal constant.
 	}
 
 	/**

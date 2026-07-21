@@ -40,11 +40,11 @@ enum Status: string {
 	 */
 	public function label(): string {
 		return match ( $this ) {
-			self::Pending      => __( 'Pending', 'mailpilot' ),
-			self::Subscribed   => __( 'Subscribed', 'mailpilot' ),
-			self::Unsubscribed => __( 'Unsubscribed', 'mailpilot' ),
-			self::Bounced      => __( 'Bounced', 'mailpilot' ),
-			self::Blocked      => __( 'Blocked', 'mailpilot' ),
+			self::Pending      => __( 'Pending', 'brainstudioz-mailpilot' ),
+			self::Subscribed   => __( 'Subscribed', 'brainstudioz-mailpilot' ),
+			self::Unsubscribed => __( 'Unsubscribed', 'brainstudioz-mailpilot' ),
+			self::Bounced      => __( 'Bounced', 'brainstudioz-mailpilot' ),
+			self::Blocked      => __( 'Blocked', 'brainstudioz-mailpilot' ),
 		};
 	}
 

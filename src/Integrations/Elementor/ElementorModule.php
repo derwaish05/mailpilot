@@ -57,7 +57,7 @@ final class ElementorModule {
 		$elements_manager->add_category(
 			self::CATEGORY,
 			[
-				'title' => __( 'MailPilot', 'mailpilot' ),
+				'title' => __( 'MailPilot', 'brainstudioz-mailpilot' ),
 				'icon'  => 'eicon-email-field',
 			]
 		);

@@ -90,13 +90,13 @@ final class SubscribersListTable extends WP_List_Table {
 	public function get_columns(): array {
 		return [
 			'cb'      => '<input type="checkbox" />',
-			'email'   => __( 'Email', 'mailpilot' ),
-			'name'    => __( 'Name', 'mailpilot' ),
-			'status'  => __( 'Status', 'mailpilot' ),
-			'source'  => __( 'Source', 'mailpilot' ),
-			'country' => __( 'Country', 'mailpilot' ),
-			'tags'    => __( 'Tags', 'mailpilot' ),
-			'created' => __( 'Created', 'mailpilot' ),
+			'email'   => __( 'Email', 'brainstudioz-mailpilot' ),
+			'name'    => __( 'Name', 'brainstudioz-mailpilot' ),
+			'status'  => __( 'Status', 'brainstudioz-mailpilot' ),
+			'source'  => __( 'Source', 'brainstudioz-mailpilot' ),
+			'country' => __( 'Country', 'brainstudioz-mailpilot' ),
+			'tags'    => __( 'Tags', 'brainstudioz-mailpilot' ),
+			'created' => __( 'Created', 'brainstudioz-mailpilot' ),
 		];
 	}
 
@@ -121,11 +121,11 @@ final class SubscribersListTable extends WP_List_Table {
 	 */
 	protected function get_bulk_actions(): array {
 		return [
-			'delete'      => __( 'Delete', 'mailpilot' ),
-			'export'      => __( 'Export', 'mailpilot' ),
-			'resync'      => __( 'Resync', 'mailpilot' ),
-			'add_tags'    => __( 'Add tags', 'mailpilot' ),
-			'remove_tags' => __( 'Remove tags', 'mailpilot' ),
+			'delete'      => __( 'Delete', 'brainstudioz-mailpilot' ),
+			'export'      => __( 'Export', 'brainstudioz-mailpilot' ),
+			'resync'      => __( 'Resync', 'brainstudioz-mailpilot' ),
+			'add_tags'    => __( 'Add tags', 'brainstudioz-mailpilot' ),
+			'remove_tags' => __( 'Remove tags', 'brainstudioz-mailpilot' ),
 		];
 	}
 
@@ -154,7 +154,7 @@ final class SubscribersListTable extends WP_List_Table {
 		);
 
 		$actions = [
-			'view' => sprintf( '<a href="%s">%s</a>', esc_url( $view ), esc_html__( 'View', 'mailpilot' ) ),
+			'view' => sprintf( '<a href="%s">%s</a>', esc_url( $view ), esc_html__( 'View', 'brainstudioz-mailpilot' ) ),
 		];
 
 		return sprintf(
@@ -204,37 +204,37 @@ final class SubscribersListTable extends WP_List_Table {
 
 		echo '<div class="alignleft actions">';
 
-		echo '<select name="status"><option value="">' . esc_html__( 'All statuses', 'mailpilot' ) . '</option>';
+		echo '<select name="status"><option value="">' . esc_html__( 'All statuses', 'brainstudioz-mailpilot' ) . '</option>';
 		foreach ( Status::cases() as $case ) {
 			printf( '<option value="%s" %s>%s</option>', esc_attr( $case->value ), selected( $status, $case->value, false ), esc_html( $case->label() ) );
 		}
 		echo '</select>';
 
-		echo '<select name="source"><option value="">' . esc_html__( 'All sources', 'mailpilot' ) . '</option>';
+		echo '<select name="source"><option value="">' . esc_html__( 'All sources', 'brainstudioz-mailpilot' ) . '</option>';
 		foreach ( Source::cases() as $case ) {
 			printf( '<option value="%s" %s>%s</option>', esc_attr( $case->value ), selected( $source, $case->value, false ), esc_html( $case->label() ) );
 		}
 		echo '</select>';
 
 		// Provider filter.
-		echo '<select name="provider"><option value="">' . esc_html__( 'All providers', 'mailpilot' ) . '</option>';
+		echo '<select name="provider"><option value="">' . esc_html__( 'All providers', 'brainstudioz-mailpilot' ) . '</option>';
 		foreach ( $this->providers as $slug => $label ) {
 			printf( '<option value="%s" %s>%s</option>', esc_attr( $slug ), selected( $provider, $slug, false ), esc_html( $label ) );
 		}
 		echo '</select>';
 
 		// Tag filter.
-		echo '<select name="tag"><option value="">' . esc_html__( 'All tags', 'mailpilot' ) . '</option>';
+		echo '<select name="tag"><option value="">' . esc_html__( 'All tags', 'brainstudioz-mailpilot' ) . '</option>';
 		foreach ( $this->tags as $tag_name ) {
 			printf( '<option value="%s" %s>%s</option>', esc_attr( $tag_name ), selected( $tag, $tag_name, false ), esc_html( $tag_name ) );
 		}
 		echo '</select>';
 
 		// Date range.
-		printf( '<input type="date" name="date_from" value="%s" aria-label="%s" />', esc_attr( $date_from ), esc_attr__( 'From date', 'mailpilot' ) );
-		printf( '<input type="date" name="date_to" value="%s" aria-label="%s" />', esc_attr( $date_to ), esc_attr__( 'To date', 'mailpilot' ) );
+		printf( '<input type="date" name="date_from" value="%s" aria-label="%s" />', esc_attr( $date_from ), esc_attr__( 'From date', 'brainstudioz-mailpilot' ) );
+		printf( '<input type="date" name="date_to" value="%s" aria-label="%s" />', esc_attr( $date_to ), esc_attr__( 'To date', 'brainstudioz-mailpilot' ) );
 
-		submit_button( __( 'Filter', 'mailpilot' ), '', 'filter_action', false );
+		submit_button( __( 'Filter', 'brainstudioz-mailpilot' ), '', 'filter_action', false );
 		echo '</div>';
 	}
 

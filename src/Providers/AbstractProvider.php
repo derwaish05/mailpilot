@@ -45,7 +45,7 @@ abstract class AbstractProvider implements Provider {
 			return [];
 		}
 
-		return [ $this->credential_field( 'api_key', __( 'API Key', 'mailpilot' ), true ) ];
+		return [ $this->credential_field( 'api_key', __( 'API Key', 'brainstudioz-mailpilot' ), true ) ];
 	}
 
 	/**
@@ -61,7 +61,7 @@ abstract class AbstractProvider implements Provider {
 	 * "Audience", "Group", "Campaign", … — used to label the list selector.
 	 */
 	public function list_label(): string {
-		return __( 'List', 'mailpilot' );
+		return __( 'List', 'brainstudioz-mailpilot' );
 	}
 
 	/**
@@ -176,7 +176,7 @@ abstract class AbstractProvider implements Provider {
 
 		if ( is_wp_error( $response ) ) {
 			/* translators: %s: underlying network/TLS error message. */
-			return SyncResult::transient( sprintf( __( 'Could not reach the provider: %s', 'mailpilot' ), $response->get_error_message() ) );
+			return SyncResult::transient( sprintf( __( 'Could not reach the provider: %s', 'brainstudioz-mailpilot' ), $response->get_error_message() ) );
 		}
 
 		$status = (int) wp_remote_retrieve_response_code( $response );
@@ -198,9 +198,9 @@ abstract class AbstractProvider implements Provider {
 			$snippet = '' !== $snippet ? ' — ' . ( function_exists( 'mb_substr' ) ? mb_substr( $snippet, 0, 120 ) : substr( $snippet, 0, 120 ) ) : '';
 
 			$message = 0 === $status
-				? __( 'Could not reach the provider (no response — check the site can make outbound HTTPS requests).', 'mailpilot' )
+				? __( 'Could not reach the provider (no response — check the site can make outbound HTTPS requests).', 'brainstudioz-mailpilot' )
 				/* translators: 1: HTTP status code, 2: optional response snippet. */
-				: sprintf( __( 'Provider request failed (HTTP %1$d)%2$s', 'mailpilot' ), $status, $snippet );
+				: sprintf( __( 'Provider request failed (HTTP %1$d)%2$s', 'brainstudioz-mailpilot' ), $status, $snippet );
 		}
 
 		// 429 (rate limit) and 5xx are worth retrying; other 4xx are permanent.

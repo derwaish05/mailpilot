@@ -48,17 +48,17 @@ final class FormSubmissionHandler {
 
 		// Nonce verification.
 		if ( ! isset( $_POST['mailpilot_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['mailpilot_nonce'] ) ), 'mailpilot_form_' . $form_id ) ) {
-			$this->respond( false, __( 'Security check failed. Please refresh and try again.', 'mailpilot' ) );
+			$this->respond( false, __( 'Security check failed. Please refresh and try again.', 'brainstudioz-mailpilot' ) );
 		}
 
 		// Honeypot: a filled hidden field means a bot — silently succeed.
 		if ( ! empty( $_POST['mailpilot_hp'] ) ) {
-			$this->respond( true, __( 'Thanks!', 'mailpilot' ) );
+			$this->respond( true, __( 'Thanks!', 'brainstudioz-mailpilot' ) );
 		}
 
 		$form = $this->forms->find( $form_id );
 		if ( null === $form || 'published' !== $form->status ) {
-			$this->respond( false, __( 'This form is not available.', 'mailpilot' ) );
+			$this->respond( false, __( 'This form is not available.', 'brainstudioz-mailpilot' ) );
 		}
 
 		// Analytics attribution surface (e.g. `form`, `elementor`).
@@ -78,7 +78,7 @@ final class FormSubmissionHandler {
 
 		// GDPR: if a consent field is present and required, it must be granted.
 		if ( $form->has_gdpr_field() && ! $consent ) {
-			$this->respond( false, __( 'Please provide consent to continue.', 'mailpilot' ) );
+			$this->respond( false, __( 'Please provide consent to continue.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$data['source']     = Source::NewsletterForm->value;
@@ -99,10 +99,10 @@ final class FormSubmissionHandler {
 		try {
 			$subscriber = $this->plugin->subscribers()->capture( $data, $options );
 		} catch ( \Throwable $e ) {
-			$this->respond( false, __( 'We could not process your submission.', 'mailpilot' ) );
+			$this->respond( false, __( 'We could not process your submission.', 'brainstudioz-mailpilot' ) );
 		}
 
-		$this->plugin->activity()->log( (int) $subscriber->id, Event::FormSubmission, sprintf( /* translators: %s: form title. */ __( 'Submitted form "%s"', 'mailpilot' ), $form->title ), [ 'form_id' => $form_id ] );
+		$this->plugin->activity()->log( (int) $subscriber->id, Event::FormSubmission, sprintf( /* translators: %s: form title. */ __( 'Submitted form "%s"', 'brainstudioz-mailpilot' ), $form->title ), [ 'form_id' => $form_id ] );
 
 		/**
 		 * Fires after a form submission is captured. Pro modules (lead magnets,
@@ -139,7 +139,7 @@ final class FormSubmissionHandler {
 
 		$this->analytics->increment( 'conversions', 1, $attribution, $form_id );
 
-		$message = (string) $form->setting( 'success_message', __( 'Thanks for subscribing!', 'mailpilot' ) );
+		$message = (string) $form->setting( 'success_message', __( 'Thanks for subscribing!', 'brainstudioz-mailpilot' ) );
 
 		/**
 		 * Filter the post-submit redirect URL. Pro lead magnets use this to send
@@ -172,7 +172,7 @@ final class FormSubmissionHandler {
 				$first = isset( $raw[ $field->key ]['first'] ) ? trim( (string) $raw[ $field->key ]['first'] ) : '';
 				if ( $field->required && '' === $first ) {
 					/* translators: %s: field label. */
-					$errors[] = sprintf( __( '%s is required.', 'mailpilot' ), $field->label ?: __( 'First name', 'mailpilot' ) );
+					$errors[] = sprintf( __( '%s is required.', 'brainstudioz-mailpilot' ), $field->label ?: __( 'First name', 'brainstudioz-mailpilot' ) );
 				}
 				continue;
 			}
@@ -181,7 +181,7 @@ final class FormSubmissionHandler {
 
 			if ( $field->required && '' === $value && FieldType::Gdpr !== $field->type ) {
 				/* translators: %s: field label. */
-				$errors[] = sprintf( __( '%s is required.', 'mailpilot' ), $field->label ?: $field->key );
+				$errors[] = sprintf( __( '%s is required.', 'brainstudioz-mailpilot' ), $field->label ?: $field->key );
 				continue;
 			}
 
@@ -198,7 +198,7 @@ final class FormSubmissionHandler {
 
 			if ( ! $valid ) {
 				/* translators: %s: field label. */
-				$errors[] = sprintf( __( '%s is not valid.', 'mailpilot' ), $field->label ?: $field->key );
+				$errors[] = sprintf( __( '%s is not valid.', 'brainstudioz-mailpilot' ), $field->label ?: $field->key );
 			}
 		}
 

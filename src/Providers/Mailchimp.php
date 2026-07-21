@@ -41,7 +41,7 @@ final class Mailchimp extends AbstractProvider {
 	}
 
 	public function credential_fields(): array {
-		return [ $this->credential_field( 'api_key', __( 'API Key', 'mailpilot' ), true, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-us20' ) ];
+		return [ $this->credential_field( 'api_key', __( 'API Key', 'brainstudioz-mailpilot' ), true, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-us20' ) ];
 	}
 
 	public function guide_url(): string {
@@ -49,7 +49,7 @@ final class Mailchimp extends AbstractProvider {
 	}
 
 	public function list_label(): string {
-		return __( 'Audience', 'mailpilot' );
+		return __( 'Audience', 'brainstudioz-mailpilot' );
 	}
 
 	public function create_contact( Contact $contact, ProviderConnection $connection ): SyncResult {

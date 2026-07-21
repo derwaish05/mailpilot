@@ -138,10 +138,10 @@ final class SubscribersController {
 		$tag    = sanitize_text_field( (string) ( $params['tag'] ?? '' ) );
 
 		if ( [] === $ids ) {
-			return new WP_Error( 'mailpilot_invalid', __( 'No subscribers selected.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_invalid', __( 'No subscribers selected.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 		if ( in_array( $action, [ 'add_tag', 'remove_tag' ], true ) && '' === $tag ) {
-			return new WP_Error( 'mailpilot_invalid', __( 'A tag is required.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_invalid', __( 'A tag is required.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$engine    = $this->plugin->subscribers();
@@ -168,7 +168,7 @@ final class SubscribersController {
 					$engine->remove_tags( $subscriber, [ $tag ] );
 					break;
 				default:
-					return new WP_Error( 'mailpilot_invalid', __( 'Unknown bulk action.', 'mailpilot' ), [ 'status' => 422 ] );
+					return new WP_Error( 'mailpilot_invalid', __( 'Unknown bulk action.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 			}
 
 			++$affected;
@@ -193,7 +193,7 @@ final class SubscribersController {
 		$connection = (int) ( $params['connection'] ?? 0 );
 
 		if ( null === $this->plugin->provider_connections()->find( $connection ) ) {
-			return new WP_Error( 'mailpilot_invalid', __( 'Choose a provider connection to sync to.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_invalid', __( 'Choose a provider connection to sync to.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$sync   = $this->plugin->sync();
@@ -226,7 +226,7 @@ final class SubscribersController {
 		} else {
 			$ids = array_values( array_filter( array_map( 'intval', (array) ( $params['ids'] ?? [] ) ) ) );
 			if ( [] === $ids ) {
-				return new WP_Error( 'mailpilot_invalid', __( 'No subscribers selected.', 'mailpilot' ), [ 'status' => 422 ] );
+				return new WP_Error( 'mailpilot_invalid', __( 'No subscribers selected.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 			}
 
 			foreach ( $ids as $id ) {
@@ -246,7 +246,7 @@ final class SubscribersController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage subscribers.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage subscribers.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -318,7 +318,7 @@ final class SubscribersController {
 		$subscriber = $this->plugin->subscriber_repository()->find( (int) $request['id'] );
 
 		if ( null === $subscriber ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Subscriber not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Subscriber not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		return new WP_REST_Response( $this->to_array( $subscriber ), 200 );
@@ -333,7 +333,7 @@ final class SubscribersController {
 		$id = (int) $request['id'];
 
 		if ( null === $this->plugin->subscriber_repository()->find( $id ) ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Subscriber not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Subscriber not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		$this->plugin->subscribers()->delete( $id );

@@ -26,7 +26,7 @@ final class Comments extends AbstractIntegration {
 	}
 
 	public function label(): string {
-		return __( 'WordPress Comments', 'mailpilot' );
+		return __( 'WordPress Comments', 'brainstudioz-mailpilot' );
 	}
 
 	public function is_available(): bool {

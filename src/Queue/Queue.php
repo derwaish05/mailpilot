@@ -60,7 +60,7 @@ final class Queue {
 	public function add_schedule( array $schedules ): array {
 		$schedules[ self::SCHEDULE ] = [
 			'interval' => MINUTE_IN_SECONDS,
-			'display'  => __( 'Every Minute (MailPilot)', 'mailpilot' ),
+			'display'  => __( 'Every Minute (MailPilot)', 'brainstudioz-mailpilot' ),
 		];
 
 		return $schedules;

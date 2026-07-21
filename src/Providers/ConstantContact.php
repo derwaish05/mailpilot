@@ -42,7 +42,7 @@ final class ConstantContact extends AbstractProvider {
 	}
 
 	public function credential_fields(): array {
-		return [ $this->credential_field( 'access_token', __( 'Access Token', 'mailpilot' ), true ) ];
+		return [ $this->credential_field( 'access_token', __( 'Access Token', 'brainstudioz-mailpilot' ), true ) ];
 	}
 
 	public function guide_url(): string {
@@ -74,11 +74,11 @@ final class ConstantContact extends AbstractProvider {
 		// sync log) see nothing actually happened. `capabilities()
 		// ->tag_selection` is already false, keeping this out of the
 		// connection UI.
-		return SyncResult::failure( __( 'Constant Contact has no tag primitive for contacts — use list membership or custom fields instead.', 'mailpilot' ) );
+		return SyncResult::failure( __( 'Constant Contact has no tag primitive for contacts — use list membership or custom fields instead.', 'brainstudioz-mailpilot' ) );
 	}
 
 	public function remove_tags( string $email, array $tags, ProviderConnection $connection ): SyncResult {
-		return SyncResult::failure( __( 'Constant Contact has no tag primitive for contacts — use list membership or custom fields instead.', 'mailpilot' ) );
+		return SyncResult::failure( __( 'Constant Contact has no tag primitive for contacts — use list membership or custom fields instead.', 'brainstudioz-mailpilot' ) );
 	}
 
 	public function get_lists( ProviderConnection $connection ): array {

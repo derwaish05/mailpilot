@@ -36,7 +36,7 @@ final class Compatibility {
 
 		$message = sprintf(
 			/* translators: 1: required PHP version, 2: required WordPress version, 3: current PHP, 4: current WP. */
-			esc_html__( 'MailPilot requires PHP %1$s+ and WordPress %2$s+. You are running PHP %3$s and WordPress %4$s.', 'mailpilot' ),
+			esc_html__( 'MailPilot requires PHP %1$s+ and WordPress %2$s+. You are running PHP %3$s and WordPress %4$s.', 'brainstudioz-mailpilot' ),
 			esc_html( MAILPILOT_MIN_PHP ),
 			esc_html( MAILPILOT_MIN_WP ),
 			esc_html( PHP_VERSION ),

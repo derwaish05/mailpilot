@@ -45,7 +45,7 @@ final class MailerLite extends AbstractProvider {
 	}
 
 	public function list_label(): string {
-		return __( 'Group', 'mailpilot' );
+		return __( 'Group', 'brainstudioz-mailpilot' );
 	}
 
 	public function create_contact( Contact $contact, ProviderConnection $connection ): SyncResult {
@@ -74,11 +74,11 @@ final class MailerLite extends AbstractProvider {
 		// callers (and the sync log) see nothing actually happened.
 		// `capabilities()->tag_selection` is already false, keeping this out
 		// of the connection UI.
-		return SyncResult::failure( __( 'MailerLite has no tag primitive for subscribers — use groups instead.', 'mailpilot' ) );
+		return SyncResult::failure( __( 'MailerLite has no tag primitive for subscribers — use groups instead.', 'brainstudioz-mailpilot' ) );
 	}
 
 	public function remove_tags( string $email, array $tags, ProviderConnection $connection ): SyncResult {
-		return SyncResult::failure( __( 'MailerLite has no tag primitive for subscribers — use groups instead.', 'mailpilot' ) );
+		return SyncResult::failure( __( 'MailerLite has no tag primitive for subscribers — use groups instead.', 'brainstudioz-mailpilot' ) );
 	}
 
 	public function get_lists( ProviderConnection $connection ): array {

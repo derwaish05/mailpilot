@@ -64,7 +64,7 @@ final class RoutingController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage routing.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage routing.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;

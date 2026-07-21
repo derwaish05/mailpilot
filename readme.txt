@@ -1,4 +1,4 @@
-=== MailPilot ===
+=== BrainStudioz MailPilot ===
 Contributors: brainstudioz
 Tags: newsletter, email marketing, mailchimp, subscriber management, lead generation
 Requires at least: 6.8
@@ -12,7 +12,7 @@ Build newsletter signup forms, manage subscribers, and sync contacts with Mailch
 
 == Description ==
 
-MailPilot helps you build your email list, manage subscribers, and synchronize contacts with popular email marketing services from one WordPress dashboard. Create newsletter signup forms, store subscribers in your own WordPress database, and connect services such as Mailchimp, Brevo, MailerLite, Kit (ConvertKit), ActiveCampaign, and more.
+BrainStudioz MailPilot helps you build your email list, manage subscribers, and synchronize contacts with popular email marketing services from one WordPress dashboard. Create newsletter signup forms, store subscribers in your own WordPress database, and connect services such as Mailchimp, Brevo, MailerLite, Kit (ConvertKit), ActiveCampaign, and more.
 
 Many newsletter integrations connect a form directly to one email service. MailPilot instead stores subscribers locally and synchronizes them with one or more supported providers, allowing you to add or switch services without rebuilding your signup forms.
 

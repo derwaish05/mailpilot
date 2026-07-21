@@ -41,14 +41,14 @@ enum Source: string {
 	 */
 	public function label(): string {
 		return match ( $this ) {
-			self::NewsletterForm => __( 'Newsletter Form', 'mailpilot' ),
-			self::WooCommerce    => __( 'WooCommerce', 'mailpilot' ),
-			self::Registration   => __( 'Registration', 'mailpilot' ),
-			self::ContactForm    => __( 'Contact Form', 'mailpilot' ),
-			self::Manual         => __( 'Manual', 'mailpilot' ),
-			self::Import         => __( 'Import', 'mailpilot' ),
-			self::Api            => __( 'API', 'mailpilot' ),
-			self::Webhook        => __( 'Webhook', 'mailpilot' ),
+			self::NewsletterForm => __( 'Newsletter Form', 'brainstudioz-mailpilot' ),
+			self::WooCommerce    => __( 'WooCommerce', 'brainstudioz-mailpilot' ),
+			self::Registration   => __( 'Registration', 'brainstudioz-mailpilot' ),
+			self::ContactForm    => __( 'Contact Form', 'brainstudioz-mailpilot' ),
+			self::Manual         => __( 'Manual', 'brainstudioz-mailpilot' ),
+			self::Import         => __( 'Import', 'brainstudioz-mailpilot' ),
+			self::Api            => __( 'API', 'brainstudioz-mailpilot' ),
+			self::Webhook        => __( 'Webhook', 'brainstudioz-mailpilot' ),
 		};
 	}
 }

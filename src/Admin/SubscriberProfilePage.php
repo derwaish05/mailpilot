@@ -35,7 +35,7 @@ final class SubscriberProfilePage {
 		$subscriber = $this->plugin->subscriber_repository()->find( $id );
 
 		if ( null === $subscriber ) {
-			echo '<div class="wrap"><h1>' . esc_html__( 'Subscriber not found', 'mailpilot' ) . '</h1></div>';
+			echo '<div class="wrap"><h1>' . esc_html__( 'Subscriber not found', 'brainstudioz-mailpilot' ) . '</h1></div>';
 
 			return;
 		}
@@ -51,41 +51,41 @@ final class SubscriberProfilePage {
 			'<h1 class="wp-heading-inline">%s</h1> <a href="%s" class="page-title-action">%s</a><hr class="wp-header-end" />',
 			esc_html( $subscriber->display_name() ),
 			esc_url( $back ),
-			esc_html__( 'Back to list', 'mailpilot' )
+			esc_html__( 'Back to list', 'brainstudioz-mailpilot' )
 		);
 
 		echo '<div id="poststuff"><div id="post-body" class="metabox-holder columns-2"><div id="post-body-content">';
 
 		// Personal information.
 		$this->card(
-			__( 'Personal Information', 'mailpilot' ),
+			__( 'Personal Information', 'brainstudioz-mailpilot' ),
 			function () use ( $subscriber, $tags ): void {
 				echo '<table class="widefat striped"><tbody>';
-				$this->row( __( 'Email', 'mailpilot' ), $subscriber->email );
-				$this->row( __( 'Name', 'mailpilot' ), $subscriber->display_name() );
-				$this->row( __( 'Phone', 'mailpilot' ), (string) $subscriber->phone );
-				$this->row( __( 'Company', 'mailpilot' ), (string) $subscriber->company );
-				$this->row( __( 'Country', 'mailpilot' ), (string) $subscriber->country );
-				$this->row( __( 'Status', 'mailpilot' ), $subscriber->status->label() );
-				$this->row( __( 'Source', 'mailpilot' ), $subscriber->source->label() );
-				$this->row( __( 'Tags', 'mailpilot' ), implode( ', ', $tags ) );
-				$this->row( __( 'Created', 'mailpilot' ), (string) $subscriber->created_at );
+				$this->row( __( 'Email', 'brainstudioz-mailpilot' ), $subscriber->email );
+				$this->row( __( 'Name', 'brainstudioz-mailpilot' ), $subscriber->display_name() );
+				$this->row( __( 'Phone', 'brainstudioz-mailpilot' ), (string) $subscriber->phone );
+				$this->row( __( 'Company', 'brainstudioz-mailpilot' ), (string) $subscriber->company );
+				$this->row( __( 'Country', 'brainstudioz-mailpilot' ), (string) $subscriber->country );
+				$this->row( __( 'Status', 'brainstudioz-mailpilot' ), $subscriber->status->label() );
+				$this->row( __( 'Source', 'brainstudioz-mailpilot' ), $subscriber->source->label() );
+				$this->row( __( 'Tags', 'brainstudioz-mailpilot' ), implode( ', ', $tags ) );
+				$this->row( __( 'Created', 'brainstudioz-mailpilot' ), (string) $subscriber->created_at );
 				echo '</tbody></table>';
 			}
 		);
 
 		// Activity timeline.
 		$this->card(
-			__( 'Activity Timeline', 'mailpilot' ),
+			__( 'Activity Timeline', 'brainstudioz-mailpilot' ),
 			function () use ( $timeline ): void {
 				if ( ! $timeline ) {
-					echo '<p>' . esc_html__( 'No activity yet.', 'mailpilot' ) . '</p>';
+					echo '<p>' . esc_html__( 'No activity yet.', 'brainstudioz-mailpilot' ) . '</p>';
 
 					return;
 				}
 
 				echo '<table class="widefat striped"><thead><tr>';
-				echo '<th>' . esc_html__( 'When', 'mailpilot' ) . '</th><th>' . esc_html__( 'Event', 'mailpilot' ) . '</th><th>' . esc_html__( 'Detail', 'mailpilot' ) . '</th>';
+				echo '<th>' . esc_html__( 'When', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Event', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Detail', 'brainstudioz-mailpilot' ) . '</th>';
 				echo '</tr></thead><tbody>';
 				foreach ( $timeline as $entry ) {
 					$event = Event::tryFrom( (string) $entry->event_type );
@@ -104,16 +104,16 @@ final class SubscriberProfilePage {
 
 		// Provider sync connections.
 		$this->card(
-			__( 'Provider Sync', 'mailpilot' ),
+			__( 'Provider Sync', 'brainstudioz-mailpilot' ),
 			function () use ( $syncs ): void {
 				if ( ! $syncs ) {
-					echo '<p>' . esc_html__( 'Not synced to any provider yet.', 'mailpilot' ) . '</p>';
+					echo '<p>' . esc_html__( 'Not synced to any provider yet.', 'brainstudioz-mailpilot' ) . '</p>';
 
 					return;
 				}
 
 				echo '<table class="widefat striped"><thead><tr>';
-				echo '<th>' . esc_html__( 'Provider', 'mailpilot' ) . '</th><th>' . esc_html__( 'Action', 'mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'mailpilot' ) . '</th>';
+				echo '<th>' . esc_html__( 'Provider', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Action', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'brainstudioz-mailpilot' ) . '</th>';
 				echo '</tr></thead><tbody>';
 				foreach ( $syncs as $sync ) {
 					printf(

@@ -142,7 +142,7 @@ final class SyncService {
 				$subscriber_id,
 				$connection->provider,
 				$action,
-				SyncResult::failure( __( 'Free plan monthly sync limit reached. Upgrade to Pro for unlimited syncs.', 'mailpilot' ) )
+				SyncResult::failure( __( 'Free plan monthly sync limit reached. Upgrade to Pro for unlimited syncs.', 'brainstudioz-mailpilot' ) )
 			);
 
 			return;
@@ -180,7 +180,7 @@ final class SyncService {
 				$subscriber_id,
 				Event::ProviderSynced,
 				/* translators: %s: provider label. */
-				sprintf( __( 'Synced to %s', 'mailpilot' ), $provider->label() ),
+				sprintf( __( 'Synced to %s', 'brainstudioz-mailpilot' ), $provider->label() ),
 				[ 'provider' => $connection->provider ]
 			);
 

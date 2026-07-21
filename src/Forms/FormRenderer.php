@@ -62,18 +62,18 @@ final class FormRenderer {
 		if ( $fallback_positioned ) {
 			$out .= sprintf(
 				'<button type="button" class="mailpilot-dismiss" data-dismiss-form aria-label="%s">&times;</button>',
-				esc_attr__( 'Dismiss', 'mailpilot' )
+				esc_attr__( 'Dismiss', 'brainstudioz-mailpilot' )
 			);
 		}
 
 		// Honeypot — bots fill it, humans do not; the field is visually hidden.
-		$out .= '<div aria-hidden="true" style="position:absolute;left:-9999px"><label>' . esc_html__( 'Leave this field empty', 'mailpilot' ) . '<input type="text" name="mailpilot_hp" tabindex="-1" autocomplete="off" /></label></div>';
+		$out .= '<div aria-hidden="true" style="position:absolute;left:-9999px"><label>' . esc_html__( 'Leave this field empty', 'brainstudioz-mailpilot' ) . '<input type="text" name="mailpilot_hp" tabindex="-1" autocomplete="off" /></label></div>';
 
 		foreach ( $form->fields as $field ) {
 			$out .= $this->render_field( $field );
 		}
 
-		$button = (string) $form->setting( 'button_text', __( 'Subscribe', 'mailpilot' ) );
+		$button = (string) $form->setting( 'button_text', __( 'Subscribe', 'brainstudioz-mailpilot' ) );
 		$out   .= sprintf(
 			'<div class="mailpilot-field mailpilot-submit"><button type="submit">%s</button></div>',
 			esc_html( $button )
@@ -108,7 +108,7 @@ final class FormRenderer {
 		$out .= sprintf( '<input type="hidden" name="form_id" value="%d" />', (int) $form->id );
 		$out .= sprintf( '<input type="hidden" name="attribution" value="%s" />', esc_attr( sanitize_key( $attribution ) ) );
 		$out .= wp_nonce_field( 'mailpilot_form_' . $form->id, 'mailpilot_nonce', true, false );
-		$out .= '<div aria-hidden="true" style="position:absolute;left:-9999px"><label>' . esc_html__( 'Leave this field empty', 'mailpilot' ) . '<input type="text" name="mailpilot_hp" tabindex="-1" autocomplete="off" /></label></div>';
+		$out .= '<div aria-hidden="true" style="position:absolute;left:-9999px"><label>' . esc_html__( 'Leave this field empty', 'brainstudioz-mailpilot' ) . '<input type="text" name="mailpilot_hp" tabindex="-1" autocomplete="off" /></label></div>';
 
 		return $out;
 	}
@@ -134,7 +134,7 @@ final class FormRenderer {
 	 * @param string $label Optional button label (defaults to the form's).
 	 */
 	public function submit_html( Form $form, string $label = '' ): string {
-		$label = '' !== trim( $label ) ? $label : (string) $form->setting( 'button_text', __( 'Subscribe', 'mailpilot' ) );
+		$label = '' !== trim( $label ) ? $label : (string) $form->setting( 'button_text', __( 'Subscribe', 'brainstudioz-mailpilot' ) );
 
 		return sprintf(
 			'<div class="mailpilot-field mailpilot-submit"><button type="submit">%s</button></div>',
@@ -232,7 +232,7 @@ final class FormRenderer {
 		$first = sprintf(
 			'<div class="mailpilot-name-part"><label for="%1$s-first">%2$s</label><input type="text" id="%1$s-first" name="%3$s[first]" value="" placeholder="%2$s"%4$s inputmode="text" /></div>',
 			esc_attr( $id ),
-			esc_html__( 'First name', 'mailpilot' ),
+			esc_html__( 'First name', 'brainstudioz-mailpilot' ),
 			esc_attr( $name ),
 			$req
 		);
@@ -240,7 +240,7 @@ final class FormRenderer {
 		$last = sprintf(
 			'<div class="mailpilot-name-part"><label for="%1$s-last">%2$s</label><input type="text" id="%1$s-last" name="%3$s[last]" value="" placeholder="%2$s" inputmode="text" /></div>',
 			esc_attr( $id ),
-			esc_html__( 'Last name', 'mailpilot' ),
+			esc_html__( 'Last name', 'brainstudioz-mailpilot' ),
 			esc_attr( $name )
 		);
 
@@ -279,7 +279,7 @@ final class FormRenderer {
 				'<label class="mailpilot-gdpr"><input type="checkbox" name="%s" value="1"%s /> %s</label>',
 				esc_attr( $name ),
 				$req,
-				esc_html( '' !== $field->label ? $field->label : __( 'I consent to receiving emails.', 'mailpilot' ) )
+				esc_html( '' !== $field->label ? $field->label : __( 'I consent to receiving emails.', 'brainstudioz-mailpilot' ) )
 			),
 			default => sprintf(
 				'<input type="%s" id="%s" name="%s" value="%s"%s%s%s />',
@@ -395,13 +395,13 @@ final class FormRenderer {
 			return '';
 		}
 
-		$label = 'full_screen' === $display_type ? __( 'Full screen', 'mailpilot' ) : __( 'Popup', 'mailpilot' );
+		$label = 'full_screen' === $display_type ? __( 'Full screen', 'brainstudioz-mailpilot' ) : __( 'Popup', 'brainstudioz-mailpilot' );
 
 		return '<div class="mailpilot-form-notice" style="padding:12px 14px;border:1px dashed #c3c4c7;border-radius:6px;color:#646970;font-size:14px;margin:0 0 8px">'
 			. esc_html(
 				sprintf(
 					/* translators: %s: display type label, e.g. "Popup" or "Full screen". */
-					__( 'MailPilot: this form is set to display as "%s". That needs MailPilot Pro’s Popups & Lead Capture module for its trigger, frequency, and A/B testing — showing it inline instead.', 'mailpilot' ),
+					__( 'MailPilot: this form is set to display as "%s". That needs MailPilot Pro’s Popups & Lead Capture module for its trigger, frequency, and A/B testing — showing it inline instead.', 'brainstudioz-mailpilot' ),
 					$label
 				)
 			)

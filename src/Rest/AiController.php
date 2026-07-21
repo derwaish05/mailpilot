@@ -61,7 +61,7 @@ final class AiController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to use the assistant.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to use the assistant.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -77,17 +77,17 @@ final class AiController {
 		$prompt = trim( (string) ( $params['prompt'] ?? '' ) );
 
 		if ( '' === $prompt ) {
-			return new WP_Error( 'mailpilot_invalid', __( 'A prompt is required.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_invalid', __( 'A prompt is required.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$client_class = '\MailPilot\Pro\Modules\Ai\AiClient';
 		if ( ! class_exists( $client_class ) ) {
-			return new WP_Error( 'mailpilot_ai_unavailable', __( 'The AI assistant requires MailPilot Pro.', 'mailpilot' ), [ 'status' => 400 ] );
+			return new WP_Error( 'mailpilot_ai_unavailable', __( 'The AI assistant requires MailPilot Pro.', 'brainstudioz-mailpilot' ), [ 'status' => 400 ] );
 		}
 
 		$client = new $client_class();
 		if ( ! $client->is_configured() ) {
-			return new WP_Error( 'mailpilot_ai_unconfigured', __( 'Add an AI provider and API key in Settings first.', 'mailpilot' ), [ 'status' => 400 ] );
+			return new WP_Error( 'mailpilot_ai_unconfigured', __( 'Add an AI provider and API key in Settings first.', 'brainstudioz-mailpilot' ), [ 'status' => 400 ] );
 		}
 
 		$max_tokens = min( 1000, max( 64, (int) ( $params['max_tokens'] ?? 700 ) ) );

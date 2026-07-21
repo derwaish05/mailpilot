@@ -40,8 +40,8 @@ final class ActiveCampaign extends AbstractProvider {
 
 	public function credential_fields(): array {
 		return [
-			$this->credential_field( 'api_url', __( 'API URL', 'mailpilot' ), true, 'https://youraccount.api-us1.com' ),
-			$this->credential_field( 'api_key', __( 'API Key', 'mailpilot' ), true, __( 'Your API token', 'mailpilot' ) ),
+			$this->credential_field( 'api_url', __( 'API URL', 'brainstudioz-mailpilot' ), true, 'https://youraccount.api-us1.com' ),
+			$this->credential_field( 'api_key', __( 'API Key', 'brainstudioz-mailpilot' ), true, __( 'Your API token', 'brainstudioz-mailpilot' ) ),
 		];
 	}
 

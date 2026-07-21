@@ -26,7 +26,7 @@ final class Registration extends AbstractIntegration {
 	}
 
 	public function label(): string {
-		return __( 'WordPress Registration', 'mailpilot' );
+		return __( 'WordPress Registration', 'brainstudioz-mailpilot' );
 	}
 
 	public function is_available(): bool {

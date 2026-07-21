@@ -43,7 +43,7 @@ final class IntegrationsPage {
 	 */
 	public function render(): void {
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'mailpilot' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$id = isset( $_GET['integration'] ) ? sanitize_key( wp_unslash( $_GET['integration'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -77,11 +77,11 @@ final class IntegrationsPage {
 	 * Render the integrations list with a Configure link each.
 	 */
 	private function render_list(): void {
-		echo '<div class="wrap"><h1>' . esc_html__( 'Integrations', 'mailpilot' ) . '</h1>';
-		echo '<p class="description">' . esc_html__( 'Capture subscribers from WordPress and other plugins. Open an integration to read its setup guide and configure it.', 'mailpilot' ) . '</p>';
+		echo '<div class="wrap"><h1>' . esc_html__( 'Integrations', 'brainstudioz-mailpilot' ) . '</h1>';
+		echo '<p class="description">' . esc_html__( 'Capture subscribers from WordPress and other plugins. Open an integration to read its setup guide and configure it.', 'brainstudioz-mailpilot' ) . '</p>';
 
 		echo '<table class="widefat striped"><thead><tr>';
-		echo '<th>' . esc_html__( 'Integration', 'mailpilot' ) . '</th><th>' . esc_html__( 'Host', 'mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'mailpilot' ) . '</th><th></th>';
+		echo '<th>' . esc_html__( 'Integration', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Host', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'brainstudioz-mailpilot' ) . '</th><th></th>';
 		echo '</tr></thead><tbody>';
 
 		foreach ( $this->integrations() as $id => $integration ) {
@@ -95,13 +95,13 @@ final class IntegrationsPage {
 				'<tr><td><strong>%s</strong></td><td>%s</td><td>%s</td><td><a href="%s" class="button">%s</a></td></tr>',
 				esc_html( $integration->label() ),
 				$integration->is_available()
-					? '<span style="color:#00a32a">' . esc_html__( 'Active', 'mailpilot' ) . '</span>'
-					: '<span style="color:#646970">' . esc_html__( 'Not installed', 'mailpilot' ) . '</span>',
+					? '<span style="color:#00a32a">' . esc_html__( 'Active', 'brainstudioz-mailpilot' ) . '</span>'
+					: '<span style="color:#646970">' . esc_html__( 'Not installed', 'brainstudioz-mailpilot' ) . '</span>',
 				! empty( $config['enabled'] )
-					? '<span class="dashicons dashicons-yes" style="color:#00a32a"></span> ' . esc_html__( 'Enabled', 'mailpilot' )
-					: esc_html__( 'Disabled', 'mailpilot' ),
+					? '<span class="dashicons dashicons-yes" style="color:#00a32a"></span> ' . esc_html__( 'Enabled', 'brainstudioz-mailpilot' )
+					: esc_html__( 'Disabled', 'brainstudioz-mailpilot' ),
 				esc_url( $url ),
-				esc_html__( 'Configure', 'mailpilot' )
+				esc_html__( 'Configure', 'brainstudioz-mailpilot' )
 			);
 		}
 
@@ -116,7 +116,7 @@ final class IntegrationsPage {
 	private function render_detail( string $id ): void {
 		$integration = $this->integrations()[ $id ] ?? null;
 		if ( null === $integration ) {
-			echo '<div class="wrap"><h1>' . esc_html__( 'Integration not found', 'mailpilot' ) . '</h1></div>';
+			echo '<div class="wrap"><h1>' . esc_html__( 'Integration not found', 'brainstudioz-mailpilot' ) . '</h1></div>';
 
 			return;
 		}
@@ -129,15 +129,15 @@ final class IntegrationsPage {
 			'<h1 class="wp-heading-inline">%s</h1> <a href="%s" class="page-title-action">%s</a><hr class="wp-header-end" />',
 			esc_html( $integration->label() ),
 			esc_url( $back ),
-			esc_html__( 'All integrations', 'mailpilot' )
+			esc_html__( 'All integrations', 'brainstudioz-mailpilot' )
 		);
 
 		if ( ! $integration->is_available() ) {
-			echo '<div class="notice notice-warning inline"><p>' . esc_html__( 'The host plugin for this integration is not active. Settings are saved, but capture only happens once the host is installed and active.', 'mailpilot' ) . '</p></div>';
+			echo '<div class="notice notice-warning inline"><p>' . esc_html__( 'The host plugin for this integration is not active. Settings are saved, but capture only happens once the host is installed and active.', 'brainstudioz-mailpilot' ) . '</p></div>';
 		}
 
 		// Setup guide.
-		echo '<div class="postbox" style="max-width:780px"><h2 class="hndle" style="padding:8px 12px">' . esc_html__( 'How it works', 'mailpilot' ) . '</h2><div class="inside">';
+		echo '<div class="postbox" style="max-width:780px"><h2 class="hndle" style="padding:8px 12px">' . esc_html__( 'How it works', 'brainstudioz-mailpilot' ) . '</h2><div class="inside">';
 		echo wp_kses_post( wpautop( $this->guide( $id, $integration->label() ) ) );
 		echo '</div></div>';
 
@@ -151,34 +151,34 @@ final class IntegrationsPage {
 
 		printf(
 			'<tr><th>%s</th><td><label><input type="checkbox" name="enabled" value="1" %s /> %s</label></td></tr>',
-			esc_html__( 'Enable', 'mailpilot' ),
+			esc_html__( 'Enable', 'brainstudioz-mailpilot' ),
 			checked( ! empty( $config['enabled'] ), true, false ),
-			esc_html__( 'Capture subscribers from this integration', 'mailpilot' )
+			esc_html__( 'Capture subscribers from this integration', 'brainstudioz-mailpilot' )
 		);
 
 		// Consent / GDPR controls.
-		echo '<tr><th colspan="2"><h2 style="margin:8px 0 0">' . esc_html__( 'Consent (GDPR)', 'mailpilot' ) . '</h2></th></tr>';
+		echo '<tr><th colspan="2"><h2 style="margin:8px 0 0">' . esc_html__( 'Consent (GDPR)', 'brainstudioz-mailpilot' ) . '</h2></th></tr>';
 		printf(
 			'<tr><th>%s</th><td><label><input type="checkbox" name="consent_auto" value="1" %s /> %s</label><p class="description">%s</p></td></tr>',
-			esc_html__( 'Respect consent checkbox', 'mailpilot' ),
+			esc_html__( 'Respect consent checkbox', 'brainstudioz-mailpilot' ),
 			checked( ! empty( $config['consent_auto'] ), true, false ),
-			esc_html__( 'Only subscribe when a consent checkbox on the form is ticked', 'mailpilot' ),
-			esc_html__( 'Auto-detects common GDPR/consent/privacy/terms/opt-in checkboxes — works with any form plugin, no field name needed. Forms without a consent checkbox are still collected.', 'mailpilot' )
+			esc_html__( 'Only subscribe when a consent checkbox on the form is ticked', 'brainstudioz-mailpilot' ),
+			esc_html__( 'Auto-detects common GDPR/consent/privacy/terms/opt-in checkboxes — works with any form plugin, no field name needed. Forms without a consent checkbox are still collected.', 'brainstudioz-mailpilot' )
 		);
-		$this->text_row( 'consent_field', __( 'Exact consent field', 'mailpilot' ), (string) ( $config['consent_field'] ?? '' ), __( 'optional — a specific field name to require (overrides auto-detect)', 'mailpilot' ) );
+		$this->text_row( 'consent_field', __( 'Exact consent field', 'brainstudioz-mailpilot' ), (string) ( $config['consent_field'] ?? '' ), __( 'optional — a specific field name to require (overrides auto-detect)', 'brainstudioz-mailpilot' ) );
 		printf(
 			'<tr><th>%s</th><td><label><input type="checkbox" name="double_opt_in" value="1" %s /> %s</label><p class="description">%s</p></td></tr>',
-			esc_html__( 'Double opt-in', 'mailpilot' ),
+			esc_html__( 'Double opt-in', 'brainstudioz-mailpilot' ),
 			checked( ! empty( $config['double_opt_in'] ), true, false ),
-			esc_html__( 'Capture as Pending until the subscriber confirms', 'mailpilot' ),
-			esc_html__( 'Recommended in the EU/UK: subscribers are not emailed or synced until they confirm. Pending contacts are never sent to a provider.', 'mailpilot' )
+			esc_html__( 'Capture as Pending until the subscriber confirms', 'brainstudioz-mailpilot' ),
+			esc_html__( 'Recommended in the EU/UK: subscribers are not emailed or synced until they confirm. Pending contacts are never sent to a provider.', 'brainstudioz-mailpilot' )
 		);
-		echo '<tr><th colspan="2"><h2 style="margin:8px 0 0">' . esc_html__( 'Routing', 'mailpilot' ) . '</h2></th></tr>';
+		echo '<tr><th colspan="2"><h2 style="margin:8px 0 0">' . esc_html__( 'Routing', 'brainstudioz-mailpilot' ) . '</h2></th></tr>';
 
-		$this->text_row( 'tags', __( 'Apply tags', 'mailpilot' ), implode( ', ', (array) ( $config['tags'] ?? [] ) ), __( 'comma-separated', 'mailpilot' ) );
-		$this->text_row( 'lists', __( 'Apply lists', 'mailpilot' ), implode( ', ', (array) ( $config['lists'] ?? [] ) ), __( 'provider list IDs, comma-separated', 'mailpilot' ) );
-		$this->text_row( 'providers', __( 'Sync to providers', 'mailpilot' ), implode( ', ', (array) ( $config['providers'] ?? [] ) ), __( 'provider connection IDs (see Providers)', 'mailpilot' ) );
-		$this->text_row( 'email_field', __( 'Email field', 'mailpilot' ), (string) ( $config['email_field'] ?? '' ), __( 'leave blank to auto-detect', 'mailpilot' ) );
+		$this->text_row( 'tags', __( 'Apply tags', 'brainstudioz-mailpilot' ), implode( ', ', (array) ( $config['tags'] ?? [] ) ), __( 'comma-separated', 'brainstudioz-mailpilot' ) );
+		$this->text_row( 'lists', __( 'Apply lists', 'brainstudioz-mailpilot' ), implode( ', ', (array) ( $config['lists'] ?? [] ) ), __( 'provider list IDs, comma-separated', 'brainstudioz-mailpilot' ) );
+		$this->text_row( 'providers', __( 'Sync to providers', 'brainstudioz-mailpilot' ), implode( ', ', (array) ( $config['providers'] ?? [] ) ), __( 'provider connection IDs (see Providers)', 'brainstudioz-mailpilot' ) );
+		$this->text_row( 'email_field', __( 'Email field', 'brainstudioz-mailpilot' ), (string) ( $config['email_field'] ?? '' ), __( 'leave blank to auto-detect', 'brainstudioz-mailpilot' ) );
 
 		// Field mapping.
 		$map_lines = [];
@@ -187,14 +187,14 @@ final class IntegrationsPage {
 		}
 		printf(
 			'<tr><th><label for="mp-field_map">%s</label></th><td><textarea id="mp-field_map" name="field_map" rows="4" class="large-text" placeholder="%s">%s</textarea><p class="description">%s</p></td></tr>',
-			esc_html__( 'Field mapping', 'mailpilot' ),
-			esc_attr__( "host_field=first_name\ncompany_name=company", 'mailpilot' ),
+			esc_html__( 'Field mapping', 'brainstudioz-mailpilot' ),
+			esc_attr__( "host_field=first_name\ncompany_name=company", 'brainstudioz-mailpilot' ),
 			esc_textarea( implode( "\n", $map_lines ) ),
-			esc_html__( 'One per line: source field = MailPilot field (first_name, last_name, phone, company, country, or a custom key).', 'mailpilot' )
+			esc_html__( 'One per line: source field = MailPilot field (first_name, last_name, phone, company, country, or a custom key).', 'brainstudioz-mailpilot' )
 		);
 
 		echo '</tbody></table>';
-		submit_button( __( 'Save Integration', 'mailpilot' ) );
+		submit_button( __( 'Save Integration', 'brainstudioz-mailpilot' ) );
 		echo '</form></div>';
 	}
 
@@ -203,7 +203,7 @@ final class IntegrationsPage {
 	 */
 	public function save(): void {
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) ) {
-			wp_die( esc_html__( 'Forbidden.', 'mailpilot' ) );
+			wp_die( esc_html__( 'Forbidden.', 'brainstudioz-mailpilot' ) );
 		}
 		check_admin_referer( 'mailpilot_save_integration' );
 
@@ -241,37 +241,37 @@ final class IntegrationsPage {
 		$form_plugins = [ 'cf7', 'wpforms', 'gravity_forms', 'ninja_forms', 'fluent_forms', 'formidable', 'jetformbuilder' ];
 
 		if ( 'wp_comments' === $id ) {
-			return __( 'When enabled, anyone who posts a comment is captured as a subscriber using their name and email. Use this to grow your list from blog engagement.', 'mailpilot' );
+			return __( 'When enabled, anyone who posts a comment is captured as a subscriber using their name and email. Use this to grow your list from blog engagement.', 'brainstudioz-mailpilot' );
 		}
 		if ( 'wp_registration' === $id ) {
-			return __( 'When enabled, every new WordPress user registration is captured as a subscriber. Their role is recorded so routing rules can target it.', 'mailpilot' );
+			return __( 'When enabled, every new WordPress user registration is captured as a subscriber. Their role is recorded so routing rules can target it.', 'brainstudioz-mailpilot' );
 		}
 		if ( in_array( $id, $form_plugins, true ) ) {
 			return sprintf(
 				/* translators: %s: plugin label. */
-				__( 'When enabled, any submission to a %s form is captured automatically — no shortcode required. The email field is auto-detected (the first valid email); set "Email field" to override it. <strong>For GDPR:</strong> enable "Respect consent checkbox" to only subscribe when a consent box on the form is ticked, and/or turn on Double opt-in so subscribers confirm first. Apply tags, push to provider connections, and map source fields below.', 'mailpilot' ),
+				__( 'When enabled, any submission to a %s form is captured automatically — no shortcode required. The email field is auto-detected (the first valid email); set "Email field" to override it. <strong>For GDPR:</strong> enable "Respect consent checkbox" to only subscribe when a consent box on the form is ticked, and/or turn on Double opt-in so subscribers confirm first. Apply tags, push to provider connections, and map source fields below.', 'brainstudioz-mailpilot' ),
 				$label
 			);
 		}
 
 		// Membership / LMS / events / donation / affiliate.
 		$contextual = [
-			'memberpress'         => __( 'Members are captured on signup, with their membership level recorded for routing.', 'mailpilot' ),
-			'pmpro'               => __( 'Members are captured when their level changes (cancellations are ignored); the level id is recorded for routing.', 'mailpilot' ),
-			'ultimate_member'     => __( 'Members are captured when registration completes.', 'mailpilot' ),
-			'buddypress'          => __( 'Members are captured when their account is activated.', 'mailpilot' ),
-			'learndash'           => __( 'Learners are captured on course enrollment; the course id is recorded for routing.', 'mailpilot' ),
-			'tutor_lms'           => __( 'Learners are captured on course enrollment; the course id is recorded for routing.', 'mailpilot' ),
-			'lifterlms'           => __( 'Students are captured on course enrollment; the course id is recorded for routing.', 'mailpilot' ),
-			'events_manager'      => __( 'Attendees are captured when a booking is added; the event id is recorded.', 'mailpilot' ),
-			'the_events_calendar' => __( 'RSVP attendees are captured; the event id is recorded.', 'mailpilot' ),
-			'givewp'              => __( 'Donors are captured on a completed donation; the amount is recorded for routing.', 'mailpilot' ),
-			'affiliatewp'         => __( 'Affiliates are captured when they register; the affiliate id is recorded.', 'mailpilot' ),
+			'memberpress'         => __( 'Members are captured on signup, with their membership level recorded for routing.', 'brainstudioz-mailpilot' ),
+			'pmpro'               => __( 'Members are captured when their level changes (cancellations are ignored); the level id is recorded for routing.', 'brainstudioz-mailpilot' ),
+			'ultimate_member'     => __( 'Members are captured when registration completes.', 'brainstudioz-mailpilot' ),
+			'buddypress'          => __( 'Members are captured when their account is activated.', 'brainstudioz-mailpilot' ),
+			'learndash'           => __( 'Learners are captured on course enrollment; the course id is recorded for routing.', 'brainstudioz-mailpilot' ),
+			'tutor_lms'           => __( 'Learners are captured on course enrollment; the course id is recorded for routing.', 'brainstudioz-mailpilot' ),
+			'lifterlms'           => __( 'Students are captured on course enrollment; the course id is recorded for routing.', 'brainstudioz-mailpilot' ),
+			'events_manager'      => __( 'Attendees are captured when a booking is added; the event id is recorded.', 'brainstudioz-mailpilot' ),
+			'the_events_calendar' => __( 'RSVP attendees are captured; the event id is recorded.', 'brainstudioz-mailpilot' ),
+			'givewp'              => __( 'Donors are captured on a completed donation; the amount is recorded for routing.', 'brainstudioz-mailpilot' ),
+			'affiliatewp'         => __( 'Affiliates are captured when they register; the affiliate id is recorded.', 'brainstudioz-mailpilot' ),
 		];
 
 		return $contextual[ $id ] ?? sprintf(
 			/* translators: %s: integration label. */
-			__( 'When enabled, %s events are captured into your subscriber list. Configure tags, providers, and field mapping below.', 'mailpilot' ),
+			__( 'When enabled, %s events are captured into your subscriber list. Configure tags, providers, and field mapping below.', 'brainstudioz-mailpilot' ),
 			$label
 		);
 	}

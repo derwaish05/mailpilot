@@ -57,7 +57,8 @@ final class Analytics {
 
 		// MySQL upsert: rely on the UNIQUE(metric, object_type, object_id, period_date) index.
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- table/identifier from internal constant; values bound via prepare().
-			$wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table/identifier from internal constant; values bound via prepare().
+			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name from internal constant; values bound via prepare().
 				"INSERT INTO {$table} (metric, object_type, object_id, value, period_date, created_at)
 				 VALUES (%s, %s, %d, %f, %s, %s)
 				 ON DUPLICATE KEY UPDATE value = value + VALUES(value)",

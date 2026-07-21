@@ -73,7 +73,7 @@ final class SubscriberEngine {
 		$this->activity->log(
 			(int) $subscriber->id,
 			$is_new ? Event::SubscriberCreated : Event::SubscriberUpdated,
-			$is_new ? __( 'Subscriber created', 'mailpilot' ) : __( 'Subscriber updated', 'mailpilot' ),
+			$is_new ? __( 'Subscriber created', 'brainstudioz-mailpilot' ) : __( 'Subscriber updated', 'brainstudioz-mailpilot' ),
 			[ 'source' => $subscriber->source->value ]
 		);
 
@@ -148,7 +148,7 @@ final class SubscriberEngine {
 					(int) $subscriber->id,
 					Event::TagAdded,
 					/* translators: %s: tag name. */
-					sprintf( __( 'Tag "%s" added', 'mailpilot' ), (string) $tag ),
+					sprintf( __( 'Tag "%s" added', 'brainstudioz-mailpilot' ), (string) $tag ),
 					[ 'tag' => (string) $tag ]
 				);
 			}
@@ -168,7 +168,7 @@ final class SubscriberEngine {
 					(int) $subscriber->id,
 					Event::TagRemoved,
 					/* translators: %s: tag name. */
-					sprintf( __( 'Tag "%s" removed', 'mailpilot' ), (string) $tag ),
+					sprintf( __( 'Tag "%s" removed', 'brainstudioz-mailpilot' ), (string) $tag ),
 					[ 'tag' => (string) $tag ]
 				);
 			}
@@ -285,7 +285,7 @@ final class SubscriberEngine {
 			(int) $subscriber->id,
 			Event::StatusChanged,
 			/* translators: 1: from status, 2: to status. */
-			sprintf( __( 'Status changed from %1$s to %2$s', 'mailpilot' ), $current->value, $target->value ),
+			sprintf( __( 'Status changed from %1$s to %2$s', 'brainstudioz-mailpilot' ), $current->value, $target->value ),
 			[
 				'from' => $current->value,
 				'to'   => $target->value,

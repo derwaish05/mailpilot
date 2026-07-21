@@ -31,7 +31,7 @@ final class FormsAction extends Action_Base {
 	}
 
 	public function get_label(): string {
-		return __( 'MailPilot', 'mailpilot' );
+		return __( 'MailPilot', 'brainstudioz-mailpilot' );
 	}
 
 	/**
@@ -43,7 +43,7 @@ final class FormsAction extends Action_Base {
 		$widget->start_controls_section(
 			'section_mailpilot',
 			[
-				'label'     => __( 'MailPilot', 'mailpilot' ),
+				'label'     => __( 'MailPilot', 'brainstudioz-mailpilot' ),
 				'condition' => [ 'submit_actions' => $this->get_name() ],
 			]
 		);
@@ -51,27 +51,27 @@ final class FormsAction extends Action_Base {
 		$widget->add_control(
 			'mailpilot_email_field',
 			[
-				'label'       => __( 'Email field ID', 'mailpilot' ),
+				'label'       => __( 'Email field ID', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::TEXT,
-				'description' => __( 'The Elementor field ID holding the email. Leave blank to auto-detect.', 'mailpilot' ),
+				'description' => __( 'The Elementor field ID holding the email. Leave blank to auto-detect.', 'brainstudioz-mailpilot' ),
 			]
 		);
 
 		$widget->add_control(
 			'mailpilot_tags',
 			[
-				'label'       => __( 'Apply tags', 'mailpilot' ),
+				'label'       => __( 'Apply tags', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::TEXT,
-				'description' => __( 'Comma-separated.', 'mailpilot' ),
+				'description' => __( 'Comma-separated.', 'brainstudioz-mailpilot' ),
 			]
 		);
 
 		$widget->add_control(
 			'mailpilot_providers',
 			[
-				'label'       => __( 'Provider connection IDs', 'mailpilot' ),
+				'label'       => __( 'Provider connection IDs', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::TEXT,
-				'description' => __( 'Comma-separated. Subscribers are queued for these connections.', 'mailpilot' ),
+				'description' => __( 'Comma-separated. Subscribers are queued for these connections.', 'brainstudioz-mailpilot' ),
 			]
 		);
 

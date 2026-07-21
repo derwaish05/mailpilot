@@ -125,7 +125,7 @@ final class ProvidersPage {
 	 */
 	public function render(): void {
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'mailpilot' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'brainstudioz-mailpilot' ) );
 		}
 
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
@@ -133,7 +133,7 @@ final class ProvidersPage {
 		$edit_id = isset( $_GET['connection'] ) ? (int) $_GET['connection'] : 0;
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-		echo '<div class="wrap mailpilot-providers"><h1>' . esc_html__( 'Providers', 'mailpilot' ) . '</h1>';
+		echo '<div class="wrap mailpilot-providers"><h1>' . esc_html__( 'Providers', 'brainstudioz-mailpilot' ) . '</h1>';
 
 		if ( 'edit' === $action && $edit_id > 0 ) {
 			$existing = $this->plugin->provider_connections()->find( $edit_id );
@@ -145,7 +145,7 @@ final class ProvidersPage {
 			}
 		}
 
-		echo '<p class="description">' . esc_html__( 'Connect the email and CRM platforms MailPilot routes subscribers to. API keys are stored encrypted.', 'mailpilot' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Connect the email and CRM platforms MailPilot routes subscribers to. API keys are stored encrypted.', 'brainstudioz-mailpilot' ) . '</p>';
 
 		$this->render_connections();
 		$this->render_connection_form();
@@ -161,11 +161,11 @@ final class ProvidersPage {
 		$labels      = $this->provider_labels();
 
 		echo '<table class="widefat striped mailpilot-connections" style="max-width:960px;margin:12px 0"><thead><tr>';
-		echo '<th>' . esc_html__( 'Provider', 'mailpilot' ) . '</th><th>' . esc_html__( 'Label', 'mailpilot' ) . '</th><th>' . esc_html__( 'Connection ID', 'mailpilot' ) . '</th><th>' . esc_html__( 'List', 'mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'mailpilot' ) . '</th><th></th>';
+		echo '<th>' . esc_html__( 'Provider', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Label', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Connection ID', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'List', 'brainstudioz-mailpilot' ) . '</th><th>' . esc_html__( 'Status', 'brainstudioz-mailpilot' ) . '</th><th></th>';
 		echo '</tr></thead><tbody>';
 
 		if ( ! $connections ) {
-			echo '<tr><td colspan="6">' . esc_html__( 'No providers connected yet.', 'mailpilot' ) . '</td></tr>';
+			echo '<tr><td colspan="6">' . esc_html__( 'No providers connected yet.', 'brainstudioz-mailpilot' ) . '</td></tr>';
 		}
 
 		foreach ( $connections as $connection ) {
@@ -185,18 +185,18 @@ final class ProvidersPage {
 				esc_html( $labels[ $connection->provider ] ?? $connection->provider ),
 				esc_html( $connection->label ),
 				(int) $connection->id,
-				'' !== $lists ? esc_html( $lists ) : '<span style="color:#d63638">' . esc_html__( 'none — set one', 'mailpilot' ) . '</span>',
+				'' !== $lists ? esc_html( $lists ) : '<span style="color:#d63638">' . esc_html__( 'none — set one', 'brainstudioz-mailpilot' ) . '</span>',
 				esc_attr( $active ? 'mailpilot-badge-on' : 'mailpilot-badge-off' ),
-				esc_html( $active ? __( 'CONNECTED', 'mailpilot' ) : __( 'INACTIVE', 'mailpilot' ) ),
+				esc_html( $active ? __( 'CONNECTED', 'brainstudioz-mailpilot' ) : __( 'INACTIVE', 'brainstudioz-mailpilot' ) ),
 				esc_url( $edit ),
-				esc_html__( 'Edit', 'mailpilot' ),
+				esc_html__( 'Edit', 'brainstudioz-mailpilot' ),
 				esc_url( $delete ),
-				esc_attr__( 'Disconnect this provider?', 'mailpilot' ),
-				esc_html__( 'Disconnect', 'mailpilot' )
+				esc_attr__( 'Disconnect this provider?', 'brainstudioz-mailpilot' ),
+				esc_html__( 'Disconnect', 'brainstudioz-mailpilot' )
 			);
 		}
 		echo '</tbody></table>';
-		echo '<p class="description">' . esc_html__( 'Use a Connection ID in a form\'s "Send to providers" action or a routing rule.', 'mailpilot' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Use a Connection ID in a form\'s "Send to providers" action or a routing rule.', 'brainstudioz-mailpilot' ) . '</p>';
 	}
 
 	/**
@@ -219,12 +219,12 @@ final class ProvidersPage {
 		if ( $editing ) {
 			printf(
 				'<h2>%s</h2><p><a href="%s">&larr; %s</a></p>',
-				esc_html__( 'Edit connection', 'mailpilot' ),
+				esc_html__( 'Edit connection', 'brainstudioz-mailpilot' ),
 				esc_url( $back ),
-				esc_html__( 'Back to providers', 'mailpilot' )
+				esc_html__( 'Back to providers', 'brainstudioz-mailpilot' )
 			);
 		} else {
-			echo '<h2>' . esc_html__( 'Connect a provider', 'mailpilot' ) . '</h2>';
+			echo '<h2>' . esc_html__( 'Connect a provider', 'brainstudioz-mailpilot' ) . '</h2>';
 		}
 
 		printf(
@@ -241,7 +241,7 @@ final class ProvidersPage {
 		echo '<table class="form-table"><tbody>';
 
 		// Provider selector — locked when editing (credentials are provider-specific).
-		echo '<tr><th scope="row">' . esc_html__( 'Provider', 'mailpilot' ) . '</th><td>';
+		echo '<tr><th scope="row">' . esc_html__( 'Provider', 'brainstudioz-mailpilot' ) . '</th><td>';
 		printf( '<select id="mp-provider"%s%s>', $editing ? ' disabled' : '', $editing ? '' : ' name="provider"' );
 		foreach ( $this->plugin->providers()->all() as $provider ) {
 			if ( $provider instanceof Provider ) {
@@ -260,7 +260,7 @@ final class ProvidersPage {
 		echo ' <span id="mp-guide" class="mailpilot-guide" style="display:none"></span>';
 		echo '</td></tr>';
 
-		$this->text_row( 'label', __( 'Label', 'mailpilot' ), __( 'e.g. Main list', 'mailpilot' ), $editing ? $existing->label : '' );
+		$this->text_row( 'label', __( 'Label', 'brainstudioz-mailpilot' ), __( 'e.g. Main list', 'brainstudioz-mailpilot' ), $editing ? $existing->label : '' );
 
 		// Every possible credential field; providers.js shows only the relevant
 		// ones for the selected provider and sets their labels/placeholders.
@@ -269,51 +269,51 @@ final class ProvidersPage {
 		}
 
 		// List / Group / Campaign selector with a live fetch.
-		echo '<tr class="mp-list-row"><th scope="row"><label for="mp-list" id="mp-list-label">' . esc_html__( 'List', 'mailpilot' ) . '</label></th><td>';
+		echo '<tr class="mp-list-row"><th scope="row"><label for="mp-list" id="mp-list-label">' . esc_html__( 'List', 'brainstudioz-mailpilot' ) . '</label></th><td>';
 		printf( '<select name="list_id" id="mp-list" data-current="%s">', esc_attr( $current_list ) );
-		echo '<option value="">' . esc_html__( '— Fetch lists, or enter an ID manually —', 'mailpilot' ) . '</option>';
+		echo '<option value="">' . esc_html__( '— Fetch lists, or enter an ID manually —', 'brainstudioz-mailpilot' ) . '</option>';
 		if ( '' !== $current_list ) {
 			printf(
 				'<option value="%1$s" selected>%2$s</option>',
 				esc_attr( $current_list ),
 				/* translators: %s: the saved list/audience id. */
-				esc_html( sprintf( __( 'Current: %s', 'mailpilot' ), $current_list ) )
+				esc_html( sprintf( __( 'Current: %s', 'brainstudioz-mailpilot' ), $current_list ) )
 			);
 		}
 		echo '</select> ';
-		echo '<button type="button" class="button" id="mp-fetch-lists">' . esc_html__( 'Fetch lists', 'mailpilot' ) . '</button>';
+		echo '<button type="button" class="button" id="mp-fetch-lists">' . esc_html__( 'Fetch lists', 'brainstudioz-mailpilot' ) . '</button>';
 		echo '<span id="mp-fetch-status" class="mailpilot-fetch-status"></span>';
-		echo '<p class="mp-manual-wrap"><a href="#" id="mp-manual-toggle">' . esc_html__( 'Enter ID manually', 'mailpilot' ) . '</a> ';
-		echo '<input type="text" name="list_id_manual" id="mp-list-manual" class="regular-text" style="display:none" placeholder="' . esc_attr__( 'List / Group / Campaign ID', 'mailpilot' ) . '" /></p>';
+		echo '<p class="mp-manual-wrap"><a href="#" id="mp-manual-toggle">' . esc_html__( 'Enter ID manually', 'brainstudioz-mailpilot' ) . '</a> ';
+		echo '<input type="text" name="list_id_manual" id="mp-list-manual" class="regular-text" style="display:none" placeholder="' . esc_attr__( 'List / Group / Campaign ID', 'brainstudioz-mailpilot' ) . '" /></p>';
 		echo '</td></tr>';
 
 		// Default tags — applied to every contact synced through this connection.
 		printf(
 			'<tr class="mp-cap-row" data-cap="tagSelection"><th scope="row"><label for="mp-default-tags">%s</label></th><td><input type="text" id="mp-default-tags" name="default_tags" value="%s" class="regular-text" placeholder="%s" /><p class="description">%s</p></td></tr>',
-			esc_html__( 'Default tags', 'mailpilot' ),
+			esc_html__( 'Default tags', 'brainstudioz-mailpilot' ),
 			esc_attr( $tags_val ),
-			esc_attr__( 'vip, newsletter', 'mailpilot' ),
-			esc_html__( 'Comma-separated. Applied to every contact synced through this connection.', 'mailpilot' )
+			esc_attr__( 'vip, newsletter', 'brainstudioz-mailpilot' ),
+			esc_html__( 'Comma-separated. Applied to every contact synced through this connection.', 'brainstudioz-mailpilot' )
 		);
 
 		// Custom field mapping — local field key => provider field key, one per line.
 		printf(
 			'<tr class="mp-cap-row" data-cap="fieldMapping"><th scope="row"><label for="mp-field-map">%s</label></th><td><textarea id="mp-field-map" name="field_map" rows="4" class="large-text code" placeholder="%s">%s</textarea><p class="description">%s</p></td></tr>',
-			esc_html__( 'Custom field mapping', 'mailpilot' ),
-			esc_attr__( "company = COMPANY\nbirthday = BIRTHDAY", 'mailpilot' ),
+			esc_html__( 'Custom field mapping', 'brainstudioz-mailpilot' ),
+			esc_attr__( "company = COMPANY\nbirthday = BIRTHDAY", 'brainstudioz-mailpilot' ),
 			esc_textarea( $map_val ),
-			esc_html__( 'One mapping per line, as local_key = provider_field_key. Maps your form/custom fields to the provider\'s fields.', 'mailpilot' )
+			esc_html__( 'One mapping per line, as local_key = provider_field_key. Maps your form/custom fields to the provider\'s fields.', 'brainstudioz-mailpilot' )
 		);
 
 		// Double opt-in.
 		printf(
 			'<tr class="mp-cap-row" data-cap="doubleOptIn"><th scope="row">%s</th><td><label><input type="checkbox" name="double_opt_in" value="1"%s /> %s</label></td></tr>',
-			esc_html__( 'Double opt-in', 'mailpilot' ),
+			esc_html__( 'Double opt-in', 'brainstudioz-mailpilot' ),
 			$editing && $existing->double_opt_in() ? ' checked' : '',
-			esc_html__( 'Require subscribers to confirm by email', 'mailpilot' )
+			esc_html__( 'Require subscribers to confirm by email', 'brainstudioz-mailpilot' )
 		);
 		echo '</tbody></table>';
-		submit_button( $editing ? __( 'Save Changes', 'mailpilot' ) : __( 'Connect Provider', 'mailpilot' ) );
+		submit_button( $editing ? __( 'Save Changes', 'brainstudioz-mailpilot' ) : __( 'Connect Provider', 'brainstudioz-mailpilot' ) );
 		echo '</form>';
 	}
 
@@ -512,7 +512,7 @@ final class ProvidersPage {
 	public function delete(): void {
 		$id = isset( $_GET['connection'] ) ? (int) $_GET['connection'] : 0;
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) || ! wp_verify_nonce( isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '', 'mailpilot_delete_provider_' . $id ) ) {
-			wp_die( esc_html__( 'Forbidden.', 'mailpilot' ) );
+			wp_die( esc_html__( 'Forbidden.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$this->plugin->provider_connections()->delete( $id );
@@ -529,7 +529,7 @@ final class ProvidersPage {
 	 */
 	private function guard( string $nonce ): void {
 		if ( ! current_user_can( AdminMenu::CAPABILITY ) ) {
-			wp_die( esc_html__( 'Forbidden.', 'mailpilot' ) );
+			wp_die( esc_html__( 'Forbidden.', 'brainstudioz-mailpilot' ) );
 		}
 		check_admin_referer( $nonce );
 	}

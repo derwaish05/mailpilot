@@ -42,8 +42,8 @@ final class CampaignMonitor extends AbstractProvider {
 
 	public function credential_fields(): array {
 		return [
-			$this->credential_field( 'api_key', __( 'API Key', 'mailpilot' ), true ),
-			$this->credential_field( 'client_id', __( 'Client ID', 'mailpilot' ), true ),
+			$this->credential_field( 'api_key', __( 'API Key', 'brainstudioz-mailpilot' ), true ),
+			$this->credential_field( 'client_id', __( 'Client ID', 'brainstudioz-mailpilot' ), true ),
 		];
 	}
 
@@ -80,11 +80,11 @@ final class CampaignMonitor extends AbstractProvider {
 		// sync log) see that nothing actually happened, instead of assuming
 		// tags were applied. `capabilities()->tag_selection` is already
 		// false, which keeps this out of the connection UI.
-		return SyncResult::failure( __( 'Campaign Monitor has no tag primitive for contacts — use list membership or custom fields instead.', 'mailpilot' ) );
+		return SyncResult::failure( __( 'Campaign Monitor has no tag primitive for contacts — use list membership or custom fields instead.', 'brainstudioz-mailpilot' ) );
 	}
 
 	public function remove_tags( string $email, array $tags, ProviderConnection $connection ): SyncResult {
-		return SyncResult::failure( __( 'Campaign Monitor has no tag primitive for contacts — use list membership or custom fields instead.', 'mailpilot' ) );
+		return SyncResult::failure( __( 'Campaign Monitor has no tag primitive for contacts — use list membership or custom fields instead.', 'brainstudioz-mailpilot' ) );
 	}
 
 	public function get_lists( ProviderConnection $connection ): array {

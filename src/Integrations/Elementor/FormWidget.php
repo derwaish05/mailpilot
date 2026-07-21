@@ -34,7 +34,7 @@ final class FormWidget extends Widget_Base {
 	}
 
 	public function get_title(): string {
-		return __( 'MailPilot Form', 'mailpilot' );
+		return __( 'MailPilot Form', 'brainstudioz-mailpilot' );
 	}
 
 	public function get_icon(): string {
@@ -69,18 +69,18 @@ final class FormWidget extends Widget_Base {
 	private function register_content_controls(): void {
 		$this->start_controls_section(
 			'section_content',
-			[ 'label' => __( 'Form', 'mailpilot' ) ]
+			[ 'label' => __( 'Form', 'brainstudioz-mailpilot' ) ]
 		);
 
 		$this->add_control(
 			'form_source',
 			[
-				'label'   => __( 'Source', 'mailpilot' ),
+				'label'   => __( 'Source', 'brainstudioz-mailpilot' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'existing',
 				'options' => [
-					'existing' => __( 'Existing form', 'mailpilot' ),
-					'inline'   => __( 'Build inline', 'mailpilot' ),
+					'existing' => __( 'Existing form', 'brainstudioz-mailpilot' ),
+					'inline'   => __( 'Build inline', 'brainstudioz-mailpilot' ),
 				],
 			]
 		);
@@ -88,7 +88,7 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'form_id',
 			[
-				'label'     => __( 'Choose form', 'mailpilot' ),
+				'label'     => __( 'Choose form', 'brainstudioz-mailpilot' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => $this->form_options(),
 				'default'   => '',
@@ -99,10 +99,10 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'form_title',
 			[
-				'label'       => __( 'Form Title', 'mailpilot' ),
+				'label'       => __( 'Form Title', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::TEXT,
-				'placeholder' => __( 'e.g. Newsletter Signup', 'mailpilot' ),
-				'description' => __( 'Admin-facing name for the form this widget creates — shown in the MailPilot Forms list and reports. Leave blank to auto-name it after this widget.', 'mailpilot' ),
+				'placeholder' => __( 'e.g. Newsletter Signup', 'brainstudioz-mailpilot' ),
+				'description' => __( 'Admin-facing name for the form this widget creates — shown in the MailPilot Forms list and reports. Leave blank to auto-name it after this widget.', 'brainstudioz-mailpilot' ),
 				'condition'   => [ 'form_source' => 'inline' ],
 			]
 		);
@@ -112,7 +112,7 @@ final class FormWidget extends Widget_Base {
 		$repeater->add_control(
 			'field_type',
 			[
-				'label'   => __( 'Type', 'mailpilot' ),
+				'label'   => __( 'Type', 'brainstudioz-mailpilot' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'email',
 				'options' => $this->field_type_options(),
@@ -121,22 +121,22 @@ final class FormWidget extends Widget_Base {
 		$repeater->add_control(
 			'field_label',
 			[
-				'label'   => __( 'Label', 'mailpilot' ),
+				'label'   => __( 'Label', 'brainstudioz-mailpilot' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => __( 'Email', 'mailpilot' ),
+				'default' => __( 'Email', 'brainstudioz-mailpilot' ),
 			]
 		);
 		$repeater->add_control(
 			'field_placeholder',
 			[
-				'label' => __( 'Placeholder', 'mailpilot' ),
+				'label' => __( 'Placeholder', 'brainstudioz-mailpilot' ),
 				'type'  => Controls_Manager::TEXT,
 			]
 		);
 		$repeater->add_control(
 			'field_required',
 			[
-				'label'        => __( 'Required', 'mailpilot' ),
+				'label'        => __( 'Required', 'brainstudioz-mailpilot' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 			]
@@ -145,11 +145,11 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'inline_fields',
 			[
-				'label'       => __( 'Fields', 'mailpilot' ),
+				'label'       => __( 'Fields', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'default'     => [
-					[ 'field_type' => 'email', 'field_label' => __( 'Email', 'mailpilot' ), 'field_required' => 'yes' ],
+					[ 'field_type' => 'email', 'field_label' => __( 'Email', 'brainstudioz-mailpilot' ), 'field_required' => 'yes' ],
 				],
 				'title_field' => '{{{ field_label }}}',
 				'condition'   => [ 'form_source' => 'inline' ],
@@ -159,16 +159,16 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'button_text',
 			[
-				'label'   => __( 'Button text', 'mailpilot' ),
+				'label'   => __( 'Button text', 'brainstudioz-mailpilot' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => __( 'Subscribe', 'mailpilot' ),
+				'default' => __( 'Subscribe', 'brainstudioz-mailpilot' ),
 			]
 		);
 
 		$this->add_control(
 			'redirect',
 			[
-				'label'       => __( 'Redirect URL', 'mailpilot' ),
+				'label'       => __( 'Redirect URL', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::URL,
 				'placeholder' => 'https://',
 			]
@@ -177,9 +177,9 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'apply_tags',
 			[
-				'label'       => __( 'Apply tags (comma-separated)', 'mailpilot' ),
+				'label'       => __( 'Apply tags (comma-separated)', 'brainstudioz-mailpilot' ),
 				'type'        => Controls_Manager::TEXT,
-				'description' => __( 'Used for inline forms.', 'mailpilot' ),
+				'description' => __( 'Used for inline forms.', 'brainstudioz-mailpilot' ),
 				'condition'   => [ 'form_source' => 'inline' ],
 			]
 		);
@@ -195,7 +195,7 @@ final class FormWidget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_inputs',
 			[
-				'label' => __( 'Inputs', 'mailpilot' ),
+				'label' => __( 'Inputs', 'brainstudioz-mailpilot' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -211,7 +211,7 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'input_text_color',
 			[
-				'label'     => __( 'Text color', 'mailpilot' ),
+				'label'     => __( 'Text color', 'brainstudioz-mailpilot' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ '{{WRAPPER}} .mailpilot-form input, {{WRAPPER}} .mailpilot-form textarea' => 'color: {{VALUE}};' ],
 			]
@@ -220,7 +220,7 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'input_bg_color',
 			[
-				'label'     => __( 'Background', 'mailpilot' ),
+				'label'     => __( 'Background', 'brainstudioz-mailpilot' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ '{{WRAPPER}} .mailpilot-form input, {{WRAPPER}} .mailpilot-form textarea' => 'background-color: {{VALUE}};' ],
 			]
@@ -237,7 +237,7 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'field_spacing',
 			[
-				'label'      => __( 'Field spacing', 'mailpilot' ),
+				'label'      => __( 'Field spacing', 'brainstudioz-mailpilot' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors'  => [ '{{WRAPPER}} .mailpilot-field' => 'margin-bottom: {{SIZE}}{{UNIT}};' ],
@@ -250,7 +250,7 @@ final class FormWidget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_button',
 			[
-				'label' => __( 'Button', 'mailpilot' ),
+				'label' => __( 'Button', 'brainstudioz-mailpilot' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -266,7 +266,7 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'button_color',
 			[
-				'label'     => __( 'Text color', 'mailpilot' ),
+				'label'     => __( 'Text color', 'brainstudioz-mailpilot' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ '{{WRAPPER}} .mailpilot-submit button' => 'color: {{VALUE}};' ],
 			]
@@ -275,7 +275,7 @@ final class FormWidget extends Widget_Base {
 		$this->add_control(
 			'button_bg',
 			[
-				'label'     => __( 'Background', 'mailpilot' ),
+				'label'     => __( 'Background', 'brainstudioz-mailpilot' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ '{{WRAPPER}} .mailpilot-submit button' => 'background-color: {{VALUE}};' ],
 			]
@@ -315,7 +315,7 @@ final class FormWidget extends Widget_Base {
 			$fields = $this->inline_fields( $settings );
 
 			if ( ! $fields ) {
-				return $this->editor_hint( __( 'Add at least one field.', 'mailpilot' ) );
+				return $this->editor_hint( __( 'Add at least one field.', 'brainstudioz-mailpilot' ) );
 			}
 
 			// The element id is stable across edits/saves (unlike a hash of
@@ -343,12 +343,12 @@ final class FormWidget extends Widget_Base {
 
 		$form_id = (int) ( $settings['form_id'] ?? 0 );
 		if ( $form_id <= 0 ) {
-			return $this->editor_hint( __( 'Select a MailPilot form.', 'mailpilot' ) );
+			return $this->editor_hint( __( 'Select a MailPilot form.', 'brainstudioz-mailpilot' ) );
 		}
 
 		$html = $module->render_form( $form_id, $count_view, 'elementor' );
 
-		return '' !== $html ? $html : $this->editor_hint( __( 'Selected form is not published.', 'mailpilot' ) );
+		return '' !== $html ? $html : $this->editor_hint( __( 'Selected form is not published.', 'brainstudioz-mailpilot' ) );
 	}
 
 	/**
@@ -383,7 +383,7 @@ final class FormWidget extends Widget_Base {
 	 * @return array<string, string>
 	 */
 	private function form_options(): array {
-		$options = [ '' => __( '— Select —', 'mailpilot' ) ];
+		$options = [ '' => __( '— Select —', 'brainstudioz-mailpilot' ) ];
 
 		foreach ( mailpilot()->forms()->repository()->all() as $form ) {
 			$label = $form->title ?: sprintf( 'Form #%d', (int) $form->id );
@@ -392,7 +392,7 @@ final class FormWidget extends Widget_Base {
 			// widget shows a "publish it" hint when a draft is selected.
 			if ( 'published' !== $form->status ) {
 				/* translators: %s: form title. */
-				$label = sprintf( __( '%s (draft)', 'mailpilot' ), $label );
+				$label = sprintf( __( '%s (draft)', 'brainstudioz-mailpilot' ), $label );
 			}
 
 			$options[ (string) $form->id ] = $label;

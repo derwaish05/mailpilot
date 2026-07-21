@@ -45,7 +45,7 @@ final class Kit extends AbstractProvider {
 	}
 
 	public function list_label(): string {
-		return __( 'Form', 'mailpilot' );
+		return __( 'Form', 'brainstudioz-mailpilot' );
 	}
 
 	public function create_contact( Contact $contact, ProviderConnection $connection ): SyncResult {

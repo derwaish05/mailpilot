@@ -100,7 +100,7 @@ final class ProvidersController {
 
 		$provider = $this->plugin->providers()->get( $slug );
 		if ( ! $provider instanceof Provider ) {
-			return new WP_Error( 'mailpilot_unknown_provider', __( 'Unknown provider.', 'mailpilot' ), [ 'status' => 400 ] );
+			return new WP_Error( 'mailpilot_unknown_provider', __( 'Unknown provider.', 'brainstudioz-mailpilot' ), [ 'status' => 400 ] );
 		}
 
 		// Map the submitted credentials onto the provider's declared fields. The
@@ -125,7 +125,7 @@ final class ProvidersController {
 		}
 
 		if ( $provider->capabilities()->api_key_auth && [] === array_filter( $creds ) ) {
-			return new WP_Error( 'mailpilot_missing_key', __( 'Enter your API key.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_missing_key', __( 'Enter your API key.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$list = sanitize_text_field( (string) ( $params['list_id'] ?? '' ) );
@@ -163,7 +163,7 @@ final class ProvidersController {
 				'id'       => $id,
 				'provider' => $provider->label(),
 				'label'    => $connection->label,
-				'list'     => '' !== $list ? $list : __( 'none — set one', 'mailpilot' ),
+				'list'     => '' !== $list ? $list : __( 'none — set one', 'brainstudioz-mailpilot' ),
 			],
 			201
 		);
@@ -198,7 +198,7 @@ final class ProvidersController {
 		$id = (int) $request['id'];
 
 		if ( null === $this->plugin->provider_connections()->find( $id ) ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Connection not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Connection not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		$this->plugin->provider_connections()->delete( $id );
@@ -212,7 +212,7 @@ final class ProvidersController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage providers.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage providers.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -232,7 +232,7 @@ final class ProvidersController {
 		if ( $conn_id > 0 ) {
 			$connection = $this->plugin->provider_connections()->find( $conn_id );
 			if ( null === $connection ) {
-				return new WP_Error( 'mailpilot_not_found', __( 'Connection not found.', 'mailpilot' ), [ 'status' => 404 ] );
+				return new WP_Error( 'mailpilot_not_found', __( 'Connection not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 			}
 			$provider = $this->plugin->providers()->get( $connection->provider );
 		} else {
@@ -241,7 +241,7 @@ final class ProvidersController {
 			$provider = $this->plugin->providers()->get( $slug );
 
 			if ( ! $provider instanceof Provider ) {
-				return new WP_Error( 'mailpilot_unknown_provider', __( 'Unknown provider.', 'mailpilot' ), [ 'status' => 400 ] );
+				return new WP_Error( 'mailpilot_unknown_provider', __( 'Unknown provider.', 'brainstudioz-mailpilot' ), [ 'status' => 400 ] );
 			}
 
 			$raw         = (array) ( $params['credentials'] ?? [] );
@@ -264,7 +264,7 @@ final class ProvidersController {
 		}
 
 		if ( ! $provider instanceof Provider ) {
-			return new WP_Error( 'mailpilot_unknown_provider', __( 'Unknown provider.', 'mailpilot' ), [ 'status' => 400 ] );
+			return new WP_Error( 'mailpilot_unknown_provider', __( 'Unknown provider.', 'brainstudioz-mailpilot' ), [ 'status' => 400 ] );
 		}
 
 		// Help the common case: credentials required but none present.
@@ -273,7 +273,7 @@ final class ProvidersController {
 				[
 					'lists'      => [],
 					'list_label' => $provider->list_label(),
-					'error'      => __( 'No API key saved for this connection — enter your key and save first, or paste it above.', 'mailpilot' ),
+					'error'      => __( 'No API key saved for this connection — enter your key and save first, or paste it above.', 'brainstudioz-mailpilot' ),
 				],
 				200
 			);

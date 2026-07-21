@@ -64,7 +64,7 @@ final class IntegrationsController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage integrations.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage integrations.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -79,7 +79,7 @@ final class IntegrationsController {
 		$id = sanitize_key( (string) $request['id'] );
 
 		if ( ! $this->is_known( $id ) ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Integration not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Integration not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		$params  = $request->get_json_params() ?: $request->get_params();

@@ -74,7 +74,7 @@ final class LeadMagnetsController {
 	 */
 	public function authorize(): bool|WP_Error {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage lead magnets.', 'mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
+			return new WP_Error( 'mailpilot_forbidden', __( 'You are not allowed to manage lead magnets.', 'brainstudioz-mailpilot' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -91,7 +91,7 @@ final class LeadMagnetsController {
 		$file   = sanitize_text_field( (string) ( $params['file'] ?? '' ) );
 
 		if ( '' === $title || '' === $file ) {
-			return new WP_Error( 'mailpilot_invalid', __( 'A title and file are required.', 'mailpilot' ), [ 'status' => 422 ] );
+			return new WP_Error( 'mailpilot_invalid', __( 'A title and file are required.', 'brainstudioz-mailpilot' ), [ 'status' => 422 ] );
 		}
 
 		$all = $this->all();
@@ -121,7 +121,7 @@ final class LeadMagnetsController {
 		$all = $this->all();
 
 		if ( ! isset( $all[ $id ] ) ) {
-			return new WP_Error( 'mailpilot_not_found', __( 'Lead magnet not found.', 'mailpilot' ), [ 'status' => 404 ] );
+			return new WP_Error( 'mailpilot_not_found', __( 'Lead magnet not found.', 'brainstudioz-mailpilot' ), [ 'status' => 404 ] );
 		}
 
 		unset( $all[ $id ] );

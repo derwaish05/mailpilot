@@ -97,20 +97,20 @@ final class AdminMenu {
 		};
 
 		$modules = [
-			[ 'slug' => self::SLUG, 'label' => __( 'Dashboard', 'mailpilot' ), 'screen' => 'dashboard', 'cb' => [ $this, 'render_dashboard' ], 'pro' => false ],
-			[ 'slug' => self::SLUG . '-subscribers', 'label' => __( 'Subscribers', 'mailpilot' ), 'screen' => 'subscribers', 'cb' => [ $this, 'render_subscribers' ], 'pro' => false ],
-			[ 'slug' => self::SLUG . '-forms', 'label' => __( 'Forms', 'mailpilot' ), 'screen' => 'forms', 'cb' => [ $this, 'render_forms' ], 'pro' => false ],
-			[ 'slug' => self::SLUG . '-providers', 'label' => __( 'Providers', 'mailpilot' ), 'screen' => 'providers', 'cb' => [ $this, 'render_providers' ], 'pro' => false ],
-			[ 'slug' => self::SLUG . '-integrations', 'label' => __( 'Integrations', 'mailpilot' ), 'screen' => 'integrations', 'cb' => [ $this, 'render_integrations' ], 'pro' => false ],
-			[ 'slug' => self::SLUG . '-analytics', 'label' => __( 'Analytics', 'mailpilot' ), 'screen' => 'analytics', 'cb' => $screen( 'analytics' ), 'pro' => false ],
-			[ 'slug' => self::SLUG . '-automations', 'label' => __( 'Automations', 'mailpilot' ), 'screen' => 'automations', 'cb' => $screen( 'automations' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-audience-routing', 'label' => __( 'Audience Routing', 'mailpilot' ), 'screen' => 'audience-routing', 'cb' => $screen( 'audience-routing' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-popups', 'label' => __( 'Popups', 'mailpilot' ), 'screen' => 'popups', 'cb' => $screen( 'popups' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-lead-magnets', 'label' => __( 'Lead Magnets', 'mailpilot' ), 'screen' => 'lead-magnets', 'cb' => $screen( 'lead-magnets' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-ai-assistant', 'label' => __( 'AI Assistant', 'mailpilot' ), 'screen' => 'ai-assistant', 'cb' => $screen( 'ai-assistant' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-import', 'label' => __( 'Import & Migration', 'mailpilot' ), 'screen' => 'import-migration', 'cb' => $screen( 'import-migration' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-license', 'label' => __( 'License', 'mailpilot' ), 'screen' => 'license', 'cb' => $screen( 'license' ), 'pro' => true ],
-			[ 'slug' => self::SLUG . '-settings', 'label' => __( 'Settings', 'mailpilot' ), 'screen' => null, 'cb' => [ $this, 'render_settings' ], 'pro' => false ],
+			[ 'slug' => self::SLUG, 'label' => __( 'Dashboard', 'brainstudioz-mailpilot' ), 'screen' => 'dashboard', 'cb' => [ $this, 'render_dashboard' ], 'pro' => false ],
+			[ 'slug' => self::SLUG . '-subscribers', 'label' => __( 'Subscribers', 'brainstudioz-mailpilot' ), 'screen' => 'subscribers', 'cb' => [ $this, 'render_subscribers' ], 'pro' => false ],
+			[ 'slug' => self::SLUG . '-forms', 'label' => __( 'Forms', 'brainstudioz-mailpilot' ), 'screen' => 'forms', 'cb' => [ $this, 'render_forms' ], 'pro' => false ],
+			[ 'slug' => self::SLUG . '-providers', 'label' => __( 'Providers', 'brainstudioz-mailpilot' ), 'screen' => 'providers', 'cb' => [ $this, 'render_providers' ], 'pro' => false ],
+			[ 'slug' => self::SLUG . '-integrations', 'label' => __( 'Integrations', 'brainstudioz-mailpilot' ), 'screen' => 'integrations', 'cb' => [ $this, 'render_integrations' ], 'pro' => false ],
+			[ 'slug' => self::SLUG . '-analytics', 'label' => __( 'Analytics', 'brainstudioz-mailpilot' ), 'screen' => 'analytics', 'cb' => $screen( 'analytics' ), 'pro' => false ],
+			[ 'slug' => self::SLUG . '-automations', 'label' => __( 'Automations', 'brainstudioz-mailpilot' ), 'screen' => 'automations', 'cb' => $screen( 'automations' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-audience-routing', 'label' => __( 'Audience Routing', 'brainstudioz-mailpilot' ), 'screen' => 'audience-routing', 'cb' => $screen( 'audience-routing' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-popups', 'label' => __( 'Popups', 'brainstudioz-mailpilot' ), 'screen' => 'popups', 'cb' => $screen( 'popups' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-lead-magnets', 'label' => __( 'Lead Magnets', 'brainstudioz-mailpilot' ), 'screen' => 'lead-magnets', 'cb' => $screen( 'lead-magnets' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-ai-assistant', 'label' => __( 'AI Assistant', 'brainstudioz-mailpilot' ), 'screen' => 'ai-assistant', 'cb' => $screen( 'ai-assistant' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-import', 'label' => __( 'Import & Migration', 'brainstudioz-mailpilot' ), 'screen' => 'import-migration', 'cb' => $screen( 'import-migration' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-license', 'label' => __( 'License', 'brainstudioz-mailpilot' ), 'screen' => 'license', 'cb' => $screen( 'license' ), 'pro' => true ],
+			[ 'slug' => self::SLUG . '-settings', 'label' => __( 'Settings', 'brainstudioz-mailpilot' ), 'screen' => null, 'cb' => [ $this, 'render_settings' ], 'pro' => false ],
 		];
 
 		/**
@@ -164,8 +164,8 @@ final class AdminMenu {
 	 */
 	public function register_menu(): void {
 		add_menu_page(
-			__( 'MailPilot', 'mailpilot' ),
-			__( 'MailPilot', 'mailpilot' ),
+			__( 'BrainStudioz MailPilot', 'brainstudioz-mailpilot' ),
+			__( 'BrainStudioz MailPilot', 'brainstudioz-mailpilot' ),
 			self::CAPABILITY,
 			self::SLUG,
 			[ $this, 'render_dashboard' ],
@@ -290,7 +290,7 @@ final class AdminMenu {
 		printf(
 			'<div class="wrap mailpilot-admin-wrap"><div id="mailpilot-admin-root" class="mailpilot-admin-loading" data-screen="%s">%s</div></div>',
 			esc_attr( $screen ),
-			esc_html__( 'Loading…', 'mailpilot' )
+			esc_html__( 'Loading…', 'brainstudioz-mailpilot' )
 		);
 	}
 
@@ -319,28 +319,28 @@ final class AdminMenu {
 
 		return [
 			'kpis'  => [
-				[ 'label' => __( 'Subscribers', 'mailpilot' ), 'value' => number_format_i18n( $analytics->subscriber_count() ), 'icon' => 'users', 'hue' => 'blue' ],
-				[ 'label' => __( 'Growth rate', 'mailpilot' ), 'value' => $growth_str, 'icon' => 'trend', 'hue' => 'green', 'delta' => '30d' ],
-				[ 'label' => __( 'Conversion rate', 'mailpilot' ), 'value' => $analytics->conversion_rate( 30 ) . '%', 'icon' => 'target', 'hue' => 'purple', 'delta' => '30d' ],
-				[ 'label' => __( 'New subscribers', 'mailpilot' ), 'value' => number_format_i18n( $analytics->new_in_last_days( 30 ) ), 'icon' => 'userplus', 'hue' => 'pink', 'delta' => '30d' ],
-				[ 'label' => __( 'Sync queue', 'mailpilot' ), 'value' => number_format_i18n( $pending ), 'icon' => 'refresh', 'hue' => 'teal' ],
+				[ 'label' => __( 'Subscribers', 'brainstudioz-mailpilot' ), 'value' => number_format_i18n( $analytics->subscriber_count() ), 'icon' => 'users', 'hue' => 'blue' ],
+				[ 'label' => __( 'Growth rate', 'brainstudioz-mailpilot' ), 'value' => $growth_str, 'icon' => 'trend', 'hue' => 'green', 'delta' => '30d' ],
+				[ 'label' => __( 'Conversion rate', 'brainstudioz-mailpilot' ), 'value' => $analytics->conversion_rate( 30 ) . '%', 'icon' => 'target', 'hue' => 'purple', 'delta' => '30d' ],
+				[ 'label' => __( 'New subscribers', 'brainstudioz-mailpilot' ), 'value' => number_format_i18n( $analytics->new_in_last_days( 30 ) ), 'icon' => 'userplus', 'hue' => 'pink', 'delta' => '30d' ],
+				[ 'label' => __( 'Sync queue', 'brainstudioz-mailpilot' ), 'value' => number_format_i18n( $pending ), 'icon' => 'refresh', 'hue' => 'teal' ],
 			],
 			'lists' => [
-				[ 'title' => __( 'Top forms', 'mailpilot' ), 'meta' => __( 'signups', 'mailpilot' ), 'icon' => 'file', 'hue' => 'blue', 'rows' => $to_rows( $analytics->top_forms() ) ],
-				[ 'title' => __( 'Top sources', 'mailpilot' ), 'meta' => __( 'subscribers', 'mailpilot' ), 'icon' => 'inbox', 'hue' => 'orange', 'rows' => $to_rows( $analytics->top_sources() ) ],
-				[ 'title' => __( 'By status', 'mailpilot' ), 'meta' => __( 'subscribers', 'mailpilot' ), 'icon' => 'pie', 'hue' => 'green', 'rows' => $to_rows( $analytics->status_breakdown() ) ],
+				[ 'title' => __( 'Top forms', 'brainstudioz-mailpilot' ), 'meta' => __( 'signups', 'brainstudioz-mailpilot' ), 'icon' => 'file', 'hue' => 'blue', 'rows' => $to_rows( $analytics->top_forms() ) ],
+				[ 'title' => __( 'Top sources', 'brainstudioz-mailpilot' ), 'meta' => __( 'subscribers', 'brainstudioz-mailpilot' ), 'icon' => 'inbox', 'hue' => 'orange', 'rows' => $to_rows( $analytics->top_sources() ) ],
+				[ 'title' => __( 'By status', 'brainstudioz-mailpilot' ), 'meta' => __( 'subscribers', 'brainstudioz-mailpilot' ), 'icon' => 'pie', 'hue' => 'green', 'rows' => $to_rows( $analytics->status_breakdown() ) ],
 			],
 			'account' => [
 				'tier'    => ucfirst( $license->tier() ),
 				'queue'   => 0 === $pending
-					? __( '0 — all synced', 'mailpilot' )
+					? __( '0 — all synced', 'brainstudioz-mailpilot' )
 					/* translators: %s: number of pending sync operations. */
-					: sprintf( __( '%s pending', 'mailpilot' ), number_format_i18n( $pending ) ),
+					: sprintf( __( '%s pending', 'brainstudioz-mailpilot' ), number_format_i18n( $pending ) ),
 				'queueOk' => 0 === $pending,
 				'usage'   => null === $cap
-					? __( 'Unlimited', 'mailpilot' )
+					? __( 'Unlimited', 'brainstudioz-mailpilot' )
 					/* translators: 1: syncs used, 2: monthly cap. */
-					: sprintf( __( '%1$s / %2$s syncs', 'mailpilot' ), number_format_i18n( $usage->used() ), number_format_i18n( $cap ) ),
+					: sprintf( __( '%1$s / %2$s syncs', 'brainstudioz-mailpilot' ), number_format_i18n( $usage->used() ), number_format_i18n( $cap ) ),
 			],
 		];
 	}
@@ -355,7 +355,7 @@ final class AdminMenu {
 		foreach ( $this->plugin->forms()->repository()->all() as $form ) {
 			$items[] = [
 				'id'     => (int) $form->id,
-				'title'  => $form->title ?: __( '(untitled)', 'mailpilot' ),
+				'title'  => $form->title ?: __( '(untitled)', 'brainstudioz-mailpilot' ),
 				'status' => ucfirst( (string) $form->status ),
 				'fields' => count( $form->fields ),
 			];
@@ -441,7 +441,7 @@ final class AdminMenu {
 				'id'       => (int) $connection->id,
 				'provider' => $labels[ $connection->provider ] ?? ucfirst( (string) $connection->provider ),
 				'label'    => (string) $connection->label,
-				'list'     => $lists ? implode( ', ', array_map( 'strval', $lists ) ) : __( 'none — set one', 'mailpilot' ),
+				'list'     => $lists ? implode( ', ', array_map( 'strval', $lists ) ) : __( 'none — set one', 'brainstudioz-mailpilot' ),
 				// Prefill values for the edit drawer so an update never wipes them.
 				'list_id'  => (string) ( $lists[0] ?? '' ),
 				'tags'     => implode( ', ', array_map( 'strval', $tags ) ),
@@ -561,8 +561,8 @@ final class AdminMenu {
 			'brand'      => '',
 			'icon'       => '',
 			'facts'      => [
-				[ 'label' => __( 'Tier', 'mailpilot' ), 'value' => ucfirst( $tier ) ],
-				[ 'label' => __( 'Status', 'mailpilot' ), 'value' => __( 'Not activated', 'mailpilot' ) ],
+				[ 'label' => __( 'Tier', 'brainstudioz-mailpilot' ), 'value' => ucfirst( $tier ) ],
+				[ 'label' => __( 'Status', 'brainstudioz-mailpilot' ), 'value' => __( 'Not activated', 'brainstudioz-mailpilot' ) ],
 			],
 		];
 
@@ -609,10 +609,10 @@ final class AdminMenu {
 				'revenue' => $zero,
 			],
 			'kpis' => [
-				[ 'label' => __( 'Revenue', 'mailpilot' ), 'value' => '$0.00', 'icon' => 'trend', 'hue' => 'green' ],
-				[ 'label' => __( 'Conversions', 'mailpilot' ), 'value' => number_format_i18n( $conversions ), 'icon' => 'check', 'hue' => 'blue' ],
-				[ 'label' => __( 'Conversion rate', 'mailpilot' ), 'value' => $analytics->conversion_rate( $days ) . '%', 'icon' => 'target', 'hue' => 'purple' ],
-				[ 'label' => __( 'Revenue / subscriber', 'mailpilot' ), 'value' => '$0.00', 'icon' => 'users', 'hue' => 'pink' ],
+				[ 'label' => __( 'Revenue', 'brainstudioz-mailpilot' ), 'value' => '$0.00', 'icon' => 'trend', 'hue' => 'green' ],
+				[ 'label' => __( 'Conversions', 'brainstudioz-mailpilot' ), 'value' => number_format_i18n( $conversions ), 'icon' => 'check', 'hue' => 'blue' ],
+				[ 'label' => __( 'Conversion rate', 'brainstudioz-mailpilot' ), 'value' => $analytics->conversion_rate( $days ) . '%', 'icon' => 'target', 'hue' => 'purple' ],
+				[ 'label' => __( 'Revenue / subscriber', 'brainstudioz-mailpilot' ), 'value' => '$0.00', 'icon' => 'users', 'hue' => 'pink' ],
 			],
 		];
 	}
@@ -685,7 +685,7 @@ final class AdminMenu {
 		}
 		$forms = [];
 		foreach ( $this->plugin->forms()->repository()->all() as $form ) {
-			$forms[] = [ 'value' => (string) $form->id, 'label' => $form->title ?: __( '(untitled)', 'mailpilot' ) ];
+			$forms[] = [ 'value' => (string) $form->id, 'label' => $form->title ?: __( '(untitled)', 'brainstudioz-mailpilot' ) ];
 		}
 		$tags = [];
 		foreach ( $this->plugin->relationships()->all_tags() as $tag ) {
@@ -748,7 +748,7 @@ final class AdminMenu {
 			$popup   = (array) $form->setting( 'popup', [] );
 			$items[] = [
 				'id'          => (int) $form->id,
-				'name'        => $form->title ?: __( '(untitled)', 'mailpilot' ),
+				'name'        => $form->title ?: __( '(untitled)', 'brainstudioz-mailpilot' ),
 				'type'        => $form->display_type,
 				'trigger'     => (string) ( $popup['trigger'] ?? 'time_delay' ),
 				'freq'        => (string) ( $popup['frequency'] ?? 'daily' ),
@@ -881,7 +881,7 @@ final class AdminMenu {
 		$this->guard();
 
 		echo '<div class="wrap">';
-		echo '<h1>' . esc_html__( 'MailPilot Settings', 'mailpilot' ) . '</h1>';
+		echo '<h1>' . esc_html__( 'BrainStudioz MailPilot Settings', 'brainstudioz-mailpilot' ) . '</h1>';
 		echo '<form method="post" action="options.php">';
 
 		settings_fields( Settings::GROUP );
@@ -910,21 +910,21 @@ final class AdminMenu {
 		// Sync new subscribers to every connected provider.
 		printf(
 			'<tr><th scope="row">%s</th><td><label><input type="checkbox" name="%s[sync_all_providers]" value="1" %s /> %s</label><p class="description">%s</p></td></tr>',
-			esc_html__( 'Sync to all providers', 'mailpilot' ),
+			esc_html__( 'Sync to all providers', 'brainstudioz-mailpilot' ),
 			esc_attr( Settings::OPTION ),
 			checked( ! empty( $settings->get( 'sync_all_providers', false ) ), true, false ),
-			esc_html__( 'Push every new subscriber to all connected providers', 'mailpilot' ),
-			esc_html__( 'When on, form/registration/comment signups are sent to every active provider connection, in addition to any providers a form selects.', 'mailpilot' )
+			esc_html__( 'Push every new subscriber to all connected providers', 'brainstudioz-mailpilot' ),
+			esc_html__( 'When on, form/registration/comment signups are sent to every active provider connection, in addition to any providers a form selects.', 'brainstudioz-mailpilot' )
 		);
 
 		// Default country for internationalising local phone numbers.
 		printf(
 			'<tr><th scope="row"><label for="mailpilot_default_country">%s</label></th><td><input name="%s[default_country]" id="mailpilot_default_country" type="text" class="small-text" maxlength="2" style="text-transform:uppercase" value="%s" placeholder="%s" /><p class="description">%s</p></td></tr>',
-			esc_html__( 'Default phone country', 'mailpilot' ),
+			esc_html__( 'Default phone country', 'brainstudioz-mailpilot' ),
 			esc_attr( Settings::OPTION ),
 			esc_attr( (string) $settings->get( 'default_country', '' ) ),
-			esc_attr__( 'e.g. PK', 'mailpilot' ),
-			esc_html__( 'Two-letter country code (ISO-3166, e.g. PK, US, GB). Local phone numbers without their own country are treated as this country when syncing to providers that require an international (+…) number. Leave blank to disable.', 'mailpilot' )
+			esc_attr__( 'e.g. PK', 'brainstudioz-mailpilot' ),
+			esc_html__( 'Two-letter country code (ISO-3166, e.g. PK, US, GB). Local phone numbers without their own country are treated as this country when syncing to providers that require an international (+…) number. Leave blank to disable.', 'brainstudioz-mailpilot' )
 		);
 
 		echo '</tbody></table>';
@@ -940,7 +940,7 @@ final class AdminMenu {
 	 */
 	private function guard(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'mailpilot' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'brainstudioz-mailpilot' ) );
 		}
 	}
 }
